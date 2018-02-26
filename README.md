@@ -35,9 +35,11 @@
 	- Using Watson NLU clients can analyze text to extract metadata from content such as concepts, entities, keywords, categories, relations and semantic roles.
 
 ## Technical Challenges
-- Front-end Design
-	- Front-end design for this application contains many layers, such as the signin/signup page, profile page, main dashboard and item submission page. The main dashboard will be quite complex as it will have to show real time analytics of the items.
+- Front-end Design - Learning and developing using Bootstrap
+        - We would like to design and develop our front-end using Bootstrap. While we have some experience using this framework we will be learning it's advanced features as we develop. As with any new framework, there will be a learning curve.
+- Real-time Analytics - Using graphs to represent our data
+        - The application will feature real-time analytics of the demographic consensus data. We will have to find a way to efficiently convey this data and update it on the fly. Our goal is to use multiple representations for the data and as such we must use the most suitable front-end tools such as Chart.js.
 - AI Based Approval System
 	- Using IBM Watson to appropriately accept and reject new item request from users. Using Natural Language Understanding our application will have to analyze the input text and verify if it is valid rateable item. 
-- AI Based Search
+- AI Based Search Engine
 	- Using IBM Watson and Datamuse we will implement a context-aware search engine that tries to strengthen the user’s input to yield stronger results. 
