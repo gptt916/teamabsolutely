@@ -6,7 +6,7 @@
 - Gobin Giritharan
 
 ## Overview
-- Demographic consensus tool that allows users to rate anything and everything YAY or NAY. Using Facebook Login user information will be extracted to create powerful data on demographic differences in preferences. Users can view preference data based on age, gender and region.
+- Demographic consensus tool that allows users to rate anything and everything YAY or NAY. Using Facebook Login user information will be extracted to create powerful data on demographic differences in preferences. Users can view preference data based on age, gender and region. We will believe this concept is extremely scalable and as such believe that we can add additional features if we complete our goals. 
 
 ## Beta Version Goals
 - Facebook Login
@@ -25,6 +25,8 @@
 	- Trending items based on the amount of searches and ratings in the past 24 hours (or other time period)
 - Context-aware search
 	- Users can search for items without having a perfect match to their input text. This will be achieved using IBM Watson and Datamuse APIs.
+- Real-time Analytics of Data
+        - Users will be able to view demographic consensus data using multiple representation formats. These formats will be dynamically updated as new data enters the application.
 
 ## Technologies
 - React.js
@@ -44,4 +46,4 @@
 4.  AI Based Search Engine
     - Using IBM Watson and Datamuse we will implement a context-aware search engine that tries to strengthen the user’s input to yield stronger results. To make this effective we will need to put in careful thought during the development process.
 5. Designing and intuitive UI
-    - As with any application, an intuitive UI is extremely important. Our application has multiple layers such as item submission, user profiles and the application dashboard so we will have to make sure to carefully design it so it is not convoluted. 
+    - As with any application, an intuitive UI is extremely important. Our application has multiple layers such as item submission, user profiles and the application dashboard so we will have to make sure to carefully design it so it is not convoluted.
