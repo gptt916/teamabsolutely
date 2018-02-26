@@ -1,4 +1,4 @@
-#Yay or Nay Project Proposal
+# Yay or Nay Project Proposal
 
 ## Team Members
 - Nick Gong
