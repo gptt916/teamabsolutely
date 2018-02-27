@@ -8,6 +8,8 @@
 ## Overview
 - Demographic consensus tool that allows users to rate anything and everything YAY or NAY. Using Facebook Login user information will be extracted to create powerful data on demographic differences in preferences. Users can view preference data based on age, gender and region. We will believe this concept is extremely scalable and as such believe that we can add additional features if we complete our goals. 
 
+Example use case: Donald Trump (The person) is submitted to our application as a rateable item. Our AI-Based approval system will approve it since Donald Trump is a public figure. The image for the item will be chosen by the application itself so inappropiate photos are not posted. Once approved, users of the application can rate Donald Trump YAY or NAY. Once a reasonable amount of users rate Donald, analytics on demographic preferences will be available to view. For example a user can see which genders, age groups and regions rated Donald Yay or Nay. Each item, in this case Donald Trump, will have a comment section, where comments can be YAY'd or NAY'd as well. To find items easily, our application will feature a search feature as well as trending items list. 
+
 ## Beta Version Goals
 - Facebook Login
 	- Users will login using Facebook. We can extract insightful information from our users using this.
