@@ -1,43 +1,28 @@
 import React from 'react';
+import classes from './Cockpit.css';
 
 const cockpit = (props) => {
-    const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-        ':hover': {
-          backgroundColor: 'lightgreen',
-          color: 'black'
-        }
-      };
-    
-      if (props.showPersons) {
-        style.backgroundColor = 'red';
-        style[':hover'] = {
-            backgroundColor: 'salmon',
-            color: 'black'
-        }
-      }
-    const classes = [];
-    
+   
+    const assignedClasses = [];
+    let btnClass = '';
+
+    if (props.showPersons) {
+        btnClass = classes.Red;
+    }
     if (props.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
 
     if (props.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
-        <div>
+        <div className={classes.Cockpit}>
             <h1>Hello World </h1>
-            <p className={classes.join(' ')}>This is a react app</p>
-            <button 
-            onClick={props.clicked}
-            style={style}>
+            <p className={assignedClasses.join(' ')}>This is a react app</p>
+            <button className={btnClass}
+            onClick={props.clicked}>
             Toggle
             </button>
         </div>
