@@ -1,0 +1,22 @@
+{
+  "name": "teamabsolutely",
+  "version": "1.0.0",
+  "description": "- Nick Gong\r - Trevor Whitaker\r - Gobin Giritharan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UTSCC09/teamabsolutely.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UTSCC09/teamabsolutely/issues"
+  },
+  "homepage": "https://github.com/UTSCC09/teamabsolutely#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
