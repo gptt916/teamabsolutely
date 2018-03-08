@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 
 const cockpit = (props) => {
     const style = {
@@ -45,4 +44,4 @@ const cockpit = (props) => {
     );
 }
 
-export default Radium(cockpit);
+export default cockpit;
