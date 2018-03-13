@@ -1,0 +1,14 @@
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header {
+  background: aqua;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}

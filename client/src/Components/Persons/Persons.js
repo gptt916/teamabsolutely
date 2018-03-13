@@ -10,7 +10,7 @@ const persons = (props) => {
               name={person.name}
               age={person.age}
               key={person.id}
-              changed={(event) => props.changed(person.id, event)}
+              changed={(event) => props.changed(person.id, event.target.value)}
               />
             )
         })
