@@ -18,11 +18,13 @@ class App extends Component {
 					/>
                     <AuthComponent/>
 				</header>
-				<div className = "frame">
-					<Sidebar
-						sidebarItems ={this.props.sidebarItems}
-					/>
-				</div>
+				<main>
+					<sidebar>
+						<Sidebar
+							sidebarItems ={this.props.sidebarItems}
+						/>
+					</sidebar>
+				</main>
 			</div>);
     }
 }

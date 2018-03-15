@@ -2,8 +2,9 @@ import * as actionTypes from '../actions';
 
 const initialState = {
     sidebarItems: [
-        {dest: "#", text: "Home"},
-        {dest: "#", text: "About"}
+        {dest: "#", text: "Search"},
+        {dest: "#", text: "Trending Items"},
+        {dest: "#", text: "New Item Submission"}
     ]
 }
 

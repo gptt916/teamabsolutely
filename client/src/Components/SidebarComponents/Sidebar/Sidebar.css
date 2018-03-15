@@ -1,12 +1,9 @@
 .container {
-  display:flex;
-  justify-content: flex-start;
-  width: 30%;
+  width: 100%;
   margin: 0 auto;
-  background:aquamarine;
 }
 
-frame {
+sidebar {
+  width: 18%;
   background:aquamarine; 
-
 }
