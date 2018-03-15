@@ -27,7 +27,7 @@ side {
     color: #000;
   }
   
-  side a::before {
+  /* side a::before {
     content: '';
     display: block;
     height: 5px;
@@ -43,4 +43,4 @@ side {
   side a:hover::before {
     width: 100%;
   }
-  
+   */
