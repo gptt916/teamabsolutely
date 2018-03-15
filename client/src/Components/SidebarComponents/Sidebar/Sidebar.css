@@ -1,14 +1,12 @@
 .container {
-	width: 80%;
-	margin: 0 auto;
-}
-
-div {
+  display:flex;
+  justify-content: flex-start;
+  width: 30%;
+  margin: 0 auto;
   background:aquamarine;
 }
 
-header::after {
-  content: '';
-  display: table;
-  clear: both;
+frame {
+  background:aquamarine; 
+
 }

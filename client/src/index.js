@@ -8,11 +8,13 @@ import { Provider } from 'react-redux';
 import personsReducer from './Stores/reducers/persons';
 import showPersonsReducer from './Stores/reducers/showPersons';
 import navbarReducer from './Stores/reducers/navbar';
+import sidebarReducer from './Stores/reducers/sidebar';
 
 const rootReducer = combineReducers({
     persons: personsReducer,
     showPersons: showPersonsReducer,
-    navbar: navbarReducer
+    navbar: navbarReducer,
+    sidebar: sidebarReducer
 });
 
 const store = createStore(rootReducer);

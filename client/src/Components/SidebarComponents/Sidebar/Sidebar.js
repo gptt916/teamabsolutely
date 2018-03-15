@@ -5,8 +5,7 @@ import SidebarItems from '../SidebarItems/SidebarItems';
 const sidebar = (props) => {
     return (
         <div className={classes.container}>
-            {/* <SidebarItems sidebarItems={props.sidebarItems}/> */}
-            <p>Something Something</p>
+            <SidebarItems sidebarItems={props.sidebarItems}/>
         </div>
     );
 };
