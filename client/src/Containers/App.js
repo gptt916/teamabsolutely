@@ -30,7 +30,7 @@ class App extends React.Component {
 		super(props);
 	
 		this.state = {
-		  docked: false,
+		  docked: true,
 		  open: false,
 		  transitions: true,
 		  touch: true,
@@ -122,8 +122,8 @@ class App extends React.Component {
 			</header>
 
 			<Sidebar {...sidebarProps}>
-				<MaterialTitlePanel title={contentHeader}>
-				{/* <div style={styles.content}>
+				{/* <MaterialTitlePanel title={contentHeader}>
+				<div style={styles.content}>
 					<p>React Sidebar is a sidebar component for React. It offers the following features:</p>
 					<ul>
 					<li>Have the sidebar slide over main content</li>
@@ -138,8 +138,8 @@ class App extends React.Component {
 					<p><b>Current rendered sidebar properties:</b></p>
 					{['open', 'docked', 'transitions', 'touch', 'shadow', 'pullRight'].map(this.renderPropCheckbox)}
 					{['touchHandleWidth', 'dragToggleDistance'].map(this.renderPropNumber)}
-				</div> */}
-				</MaterialTitlePanel>
+				</div>
+				</MaterialTitlePanel> */}
 		 	</Sidebar>
 		  </div>
 		);
