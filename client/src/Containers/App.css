@@ -5,4 +5,10 @@
 main {
   display:flex;
   justify-content: flex-start;
+  height: 100%;
+}
+
+#root{
+	margin:0;
+	height:100%;
 }

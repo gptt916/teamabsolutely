@@ -3,4 +3,15 @@ body {
 	background: #222;
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
+	height:100%;
+}
+
+html{
+	margin:0;
+	height:100%;
+}
+
+#root{
+	margin:0;
+	height:100%;
 }
