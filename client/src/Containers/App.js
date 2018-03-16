@@ -26,7 +26,9 @@ class App extends Component {
 				<main>
 					<sidebar>
 						<Sidebar
-							sidebarItems ={this.props.sidebarItems}
+							searchFieldValue = {this.props.sidebar.searchFieldValue}
+							searchFieldInput = {this.props.onSearchInput}
+							sidebarItems ={this.props.sidebar.sidebarItems}
 						/>
 					</sidebar>
 				</main>
@@ -39,7 +41,7 @@ const mapStateToProps = (state) => {
 		persons: state.persons.persons,
 		showPersons: state.showPersons.showPersons,
 		navbarItems: state.navbar.navbarItems,
-		sidebarItems: state.sidebar.sidebarItems
+		sidebar: state.sidebar
 	};
 };
 
@@ -47,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		onNameChange: (personId, val) => dispatch({type: actionTypes.UPDATE_NAMES, value: val, id: personId}),
 		onDeletePerson: (personId) => dispatch({type: actionTypes.DELETE_PERSON, personIndex: personId}),
-		onPersonToggle: () => dispatch({type: actionTypes.TOGGLE_PERSON})
+		onPersonToggle: () => dispatch({type: actionTypes.TOGGLE_PERSON}),
+		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value})
 	};
 };
 
