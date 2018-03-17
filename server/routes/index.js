@@ -19,8 +19,10 @@ router.get('/user/create', userCtrl.createUser);
 
 router.get('/user/getAll', userCtrl.getAllUsers);
 
-router.get('/items/create', itemCtrl.createUser);
+router.get('/items/create', itemCtrl.createItem);
 
-router.get('/items/getAll', itemCtrl.getAllUsers);
+router.get('/items/:name/', itemCtrl.getItem);
+
+router.get('/items/getAll', itemCtrl.getAllItems);
 
 module.exports = router;
