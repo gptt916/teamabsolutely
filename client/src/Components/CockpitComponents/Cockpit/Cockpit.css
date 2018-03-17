@@ -1,0 +1,70 @@
+.container {
+    position: relative;
+}
+
+.mainImg {
+    margin-top: 20px;
+    border: 10px solid brown;
+    max-width: 600px;
+    max-height: 480px;
+    background: black;
+}
+
+.rateImg {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 150px;
+}
+
+.rateImg:hover {
+    cursor: pointer;
+}
+
+.progressBarContainer {
+    margin-top: 5px !important;
+    background: #222 !important;
+    align-self: center;
+    width: 600px;
+    height: 50px;
+    margin: auto;
+}
+
+.progressBar {
+    height: 3rem !important;
+    position: relative;
+}
+
+.progressBarText {
+    font-size: 30px;
+    text-align: center !important;
+    line-height: 50px;
+}
+
+.imageTitle {
+    margin-top: 20px;
+    color: white;
+}
+
+.navButtons {
+    margin: auto;
+    width: 600px !important;
+}
+
+.prevButton {
+    float: left !important;
+}
+
+.prevButton:hover {
+    cursor: pointer;
+}
+
+.nextButton {
+    float: right !important;
+}
+
+.nextButton:hover {
+    cursor: pointer;
+}

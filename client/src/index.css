@@ -1,6 +1,10 @@
 body {
-	margin: 0;
-	background: #222;
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 400;
+	margin: 0 !important;
+	background: #222 !important;
+	font-family: 'Work Sans', sans-serif !important;
+	font-weight: 400 !important;
+}
+
+.slider-control-bottomcenter{
+	visibility: hidden;
 }

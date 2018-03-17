@@ -158,6 +158,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            include: path.resolve(__dirname, "../src"),
             use: [
               require.resolve('style-loader'),
               {
@@ -189,6 +190,10 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
