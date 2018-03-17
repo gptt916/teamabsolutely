@@ -1,15 +1,15 @@
-var User = require('../models/user.model');
+var Item = require('../models/item.model');
 
-function createUser() {
-    var user = new User({
+function createItem() {
+    var item = new Item({
         username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
         email: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10)
     });
-    return user;
+    return item;
 }
 
-function getAllUsers(callback) {
-    User.find()
+function getAllItems(callback) {
+    Item.find()
     .exec()
     .then(docs => {
         callback(docs);
@@ -20,6 +20,6 @@ function getAllUsers(callback) {
 }
 
 module.exports = {
-    createUser,
-    getAllUsers
+    createItem,
+    getAllItems
 };
