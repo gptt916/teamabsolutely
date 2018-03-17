@@ -31,6 +31,7 @@ module.exports = function(passport) {
           newUser.facebook.token = token;
           newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
           newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
+          newUser.facebook.username = profile.name.givenName + ' ' + profile.name.familyName;
 
           newUser.save(function(err) {
             if (err)
