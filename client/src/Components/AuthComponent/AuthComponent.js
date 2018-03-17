@@ -13,8 +13,10 @@ export default class AuthComponent extends Component {
 
             window.FB.Event.subscribe('auth.statusChange', (response) => {
                 if (response.authResponse) {
+                    // TODO
                     this.updateLoggedInState(response)
                 } else {
+                    // TODO
                     this.updateLoggedOutState()
                 }
             });
