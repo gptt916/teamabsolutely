@@ -1,9 +1,12 @@
 var User = require('../models/user.model');
 
-function createUser() {
+function createUser(id, token, email, name, username) {
     var user = new User({
-        username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
-        email: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10)
+        id: id,
+        token: token,
+        email: email,
+        name: name,
+        username: username
     });
     return user;
 }
