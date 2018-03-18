@@ -10,6 +10,7 @@ const searchField = (props) => {
             width: '75%'
         },
         searchComponents:{
+            marginBottom:'20px'
         }
       };
 

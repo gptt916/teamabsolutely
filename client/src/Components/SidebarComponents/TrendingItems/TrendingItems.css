@@ -1,7 +1,8 @@
 
-.TrendingItemListingItemList {
+.TrendingItemList {
     display: flex;
     justify-content: center;
+    margin-bottom:20px;
   }
   
   .TrendingItemList ul {
@@ -12,8 +13,8 @@
   
   .TrendingItemList li {
     display: flex;
-    margin:20px;
-    padding-top: 23px;
+    margin-bottom:0px;
+    padding-top: 15px;
   }
   
   .TrendingItemList a {
