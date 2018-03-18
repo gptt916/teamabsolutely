@@ -11,17 +11,19 @@ import showPersonsReducer from './Stores/reducers/showPersons';
 import navbarReducer from './Stores/reducers/navbar';
 import cockpitReducer from './Stores/reducers/cockpit';
 import authReducer from './Stores/reducers/auth';
-
+import sidebarReducer from './Stores/reducers/sidebar';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:8080';
+
 
 const rootReducer = combineReducers({
     persons: personsReducer,
     showPersons: showPersonsReducer,
     navbar: navbarReducer,
     cockpit: cockpitReducer,
-    auth: authReducer
+    auth: authReducer,
+    sidebar: sidebarReducer
 });
 
 const store = createStore(rootReducer);

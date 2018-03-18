@@ -1,34 +1,34 @@
 
-nav {
-    float: right;
+.TrendingItemList {
+    display: flex;
+    justify-content: center;
+    margin-bottom:20px;
   }
   
-  nav ul {
+  .TrendingItemList ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
   
-  nav li {
-    display: inline-block;
-    margin-left: 70px;
-    padding-top: 23px;
-  
-    position: relative;
+  .TrendingItemList li {
+    display: flex;
+    margin-bottom:0px;
+    padding-top: 15px;
   }
   
-  nav a {
+  .TrendingItemList a {
     color: #444;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
   }
   
-  nav a:hover {
+  .TrendingItemList a:hover {
     color: #000;
   }
   
-  nav a::before {
+  /* .TrendingItemList a::before {
     content: '';
     display: block;
     height: 5px;
@@ -41,7 +41,7 @@ nav {
     transition: all ease-in-out 250ms;
   }
   
-  nav a:hover::before {
+  .TrendingItemList a:hover::before {
     width: 100%;
   }
-  
+   */

@@ -3,8 +3,19 @@ body {
 	background: #222 !important;
 	font-family: 'Work Sans', sans-serif !important;
 	font-weight: 400 !important;
+	height: 100%;
 }
 
 .slider-control-bottomcenter{
 	visibility: hidden;
+}
+
+html{
+	margin:0;
+	height:100%;
+}
+
+#root{
+	margin:0;
+	height:100%;
 }

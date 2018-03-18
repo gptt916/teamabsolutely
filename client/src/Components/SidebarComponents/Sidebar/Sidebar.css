@@ -1,14 +1,9 @@
 .container {
-	width: 80%;
-	margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
-div {
-  background:aquamarine;
-}
-
-header::after {
-  content: '';
-  display: table;
-  clear: both;
-}
+/* .SideBar {
+  width: 18%;
+  background:aquamarine; 
+} */
