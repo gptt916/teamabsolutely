@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export default class AuthComponent extends Component {
 
@@ -14,7 +18,8 @@ export default class AuthComponent extends Component {
             window.FB.Event.subscribe('auth.statusChange', (response) => {
                 if (response.authResponse) {
                     // TODO
-                    this.updateLoggedInState(response)
+                    console.log(response);
+                    this.updateLoggedInState(response.authResponse.accessToken);
                 } else {
                     // TODO
                     this.updateLoggedOutState()
@@ -32,9 +37,25 @@ export default class AuthComponent extends Component {
         }(document, 'script', 'facebook-jssdk'));
     }
 
-    render() {
-        return (
-            <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    updateLoggedInState(fbToken) {
+        axios.post('auth/facebook', {"access_token": fbToken})
+            .then(response => {
+                console.log(response);
+                cookies.set('access_token', response.data.token, { path: '/'});
+                this.props.setLoggedIn(response.data.token)
+            })
+            .catch(err => {
+                console.log(err);
+            }
         );
+    }
+
+    render() {
+        let header = <p>Logged in</p>;
+
+        if (!this.props.isLoggedIn) {
+            header = <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>;
+        }
+        return <div>{header}</div>;
     }
 }

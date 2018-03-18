@@ -4,34 +4,30 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var routes = require('./routes/index');
 var app = express();
+var cors = require('cors');
 
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-var flash = require('connect-flash');
-var session = require('express-session');
 
 var mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGO_HOST);
+
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
+app.use(bodyParser.json());
 app.use('/', routes);
+
+app.use(cors());
+app.options('*', cors());
 
 app.set('port', process.env.PORT || 8080);
 
 var server = app.listen(app.get('port'), function() {
-    console.log("Server started");
-})
-
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    console.log("Server started on port " + app.get('port'));
 });
 
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {},
-  });
-});

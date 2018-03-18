@@ -1,6 +1,17 @@
 var mongoose = require('mongoose');
 var User = require('../models/user.model');
 var userService = require('../services/user.service');
+const JWT = require('jsonwebtoken');
+const { JWT_SECRET } = require('../config/auth');
+
+signToken = user => {
+    return JWT.sign({
+      iss: 'YayOrNay',
+      sub: user._id,
+      iat: new Date().getTime(), // current time
+      exp: new Date().setDate(new Date().getDate() + 1) // current time + 1 day ahead
+    }, JWT_SECRET);
+  }
 
 function pushUserToDatabase(req, res, user, createNew = false) {
     if (createNew) {
@@ -37,7 +48,19 @@ function getAllUsers(req, res) {
     });
 }
 
+function secret(req, res) {
+    res.status(200).json({key: "super duper secret" });
+}
+
+function facebookOAuth(req, res, next) {
+    // Generate token
+    const token = signToken(req.user);
+    res.status(200).json({ token: token });
+  }
+
 module.exports = {
     createUser,
-    getAllUsers
+    getAllUsers,
+    facebookOAuth,
+    secret
 };

@@ -1,26 +1,17 @@
 var express = require('express');
 var passport = require('passport');
-var router = express.Router();
+const passportConf = require('../config/passport');
+const router = require('express-promise-router')();
+const passportJWT = passport.authenticate('jwt', { session: false });
+
 var userCtrl = require('../controllers/user.controller');
 var itemCtrl = require('../controllers/item.controller');
 
-router.get('/', function(req, res) {
-    res.send("<h1> TEST TEST TEST </h1>");
-});
+router.route('/auth/facebook')
+    .post(passport.authenticate('facebookToken', { session: false }), userCtrl.facebookOAuth);
 
-router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+router.route('/secret')
+  .get(passportJWT, userCtrl.secret);
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/profile',
-  failureRedirect: '/',
-}));
-
-router.get('/user/create', userCtrl.createUser);
-
-router.get('/user/getAll', userCtrl.getAllUsers);
-
-router.get('/items/create', itemCtrl.createUser);
-
-router.get('/items/getAll', itemCtrl.getAllUsers);
-
+  
 module.exports = router;

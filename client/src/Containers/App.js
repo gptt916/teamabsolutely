@@ -16,7 +16,10 @@ class App extends Component {
                     <Navbar
 						navbarItems={this.props.navbarItems}
 					/>
-                    <AuthComponent/>
+                    <AuthComponent
+					access_token={this.props.access_token}
+					isLoggedIn={this.props.isLoggedIn}
+					setLoggedIn={this.props.setLoggedIn}/>
 				</header>
 				<Cockpit
 					items={this.props.cockpitItems}
@@ -36,7 +39,9 @@ const mapStateToProps = (state) => {
 		showPersons: state.showPersons.showPersons,
 		navbarItems: state.navbar.navbarItems,
 		cockpitItems: state.cockpit.items,
-		activeIndex: state.cockpit.activeIndex
+		activeIndex: state.cockpit.activeIndex,
+		isLoggedIn: state.auth.isLoggedIn,
+		access_token: state.auth.access_token
 	};
 };
 
@@ -48,7 +53,9 @@ const mapDispatchToProps = (dispatch) => {
 		onExiting: () => dispatch({type: actionTypes.COCKPIT_ON_EXITING}),
 		onExited: () => dispatch({type: actionTypes.COCKPIT_ON_EXITED}),
 		cockpitNext: () => dispatch({type: actionTypes.COCKPIT_NEXT}),
-		cockpitPrev: () => dispatch({type: actionTypes.COCKPIT_PREV})
+		cockpitPrev: () => dispatch({type: actionTypes.COCKPIT_PREV}),
+		setLoggedIn: (access_token) => dispatch({type: actionTypes.SET_LOGGED_IN, token: access_token}),
+		setLoggedOut: () => dispatch({type: actionTypes.SET_LOGGED_OUT})
 	};
 };
 
