@@ -1,5 +1,3 @@
-import * as actionTypes from '../actions';
-
 const initialState = {
     navbarItems: [
         {dest: "#", text: "Home"},

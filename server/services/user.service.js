@@ -22,7 +22,20 @@ function getAllUsers(callback) {
     });
 }
 
+function getAllUserVotes(user, callback) {
+    User.findOne({_id: user.id})
+        .select('votes')
+        .exec()
+        .then(docs => {
+            callback(docs);
+        })
+        .catch(err => {
+            callback({error: err})
+        });
+}
+
 module.exports = {
     createUser,
-    getAllUsers
+    getAllUsers,
+    getAllUserVotes
 };

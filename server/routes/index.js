@@ -17,6 +17,8 @@ router.get('/user/create', userCtrl.createUser);
 
 router.get('/user/getAll', userCtrl.getAllUsers);
 
+router.get('/user/getAllUserVotes', passportJWT, userCtrl.getAllUseerVotes);
+
 router.post('/items/create', itemCtrl.createItem);
 
 router.get('/items/getAll', itemCtrl.getAllItems);

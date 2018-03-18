@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './NavbarItem.css';
 
 const navbarItem = (props) => {
     return (

@@ -13,7 +13,13 @@ let userSchema = mongoose.Schema({
       email: String,
       name: String,
       username: String,
-    }
+    },
+    votes: [
+      {
+        itemId: mongoose.Schema.Types.ObjectId,
+        voteYAY: Boolean
+      }
+    ]
 });
 
 userSchema.methods.generateHash = function(password) {
