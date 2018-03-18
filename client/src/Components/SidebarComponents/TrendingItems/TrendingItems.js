@@ -1,11 +1,11 @@
 import React from 'react';
-import classes from './SidebarItems.css';
-import SidebarItem from './SidebarItem/SidebarItem';
+import classes from './TrendingItems.css';
+import TrendingItem from './TrendingItem/TrendingItem';
 
-const sidebarItems = (props) => {
-    const items = props.sidebarItems.map((item, index) => {
+const trendingItems = (props) => {
+    const items = props.trendingItems.map((item, index) => {
         return(
-            <SidebarItem
+            <TrendingItem
                 destination={item.dest}
                 text={item.text}
                 key={index}
@@ -22,4 +22,4 @@ const sidebarItems = (props) => {
     );
 };
 
-export default sidebarItems;
+export default trendingItems;

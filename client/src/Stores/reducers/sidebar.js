@@ -1,35 +1,45 @@
 import * as actionTypes from '../actions';
 
 const initialState = {
-    sidebarItems: [
-        {dest: "#", text: "Search"},
-        {dest: "#", text: "Trending Items"},
-        {dest: "#", text: "New Item Submission"}
+    trendingItems: [
+        {dest: "#", text: "first post"},
+        {dest: "#", text: "second post"},
+        {dest: "#", text: "third post"}
     ],
     searchFieldValue: [
         {value: ''}
     ]
 }
-  
-function handleChange(state, action) {
+
+// Sets searchFieldValue state on every input
+function onSearchInput(state, action) {
     console.log(action.value);
     return {
         ...state,
         searchFieldValue: action.value
     }
 }
-  
-// function handleSubmit(state, action) {
-//     alert('A name was submitted: ' + action.value);
-//     action.preventDefault();
-//     return state;
-// }
+
+
+// Handles search submit click
+function handleSubmit(state, action) {
+    alert('A name was submitted: ' + action.value);
+    action.preventDefault();
+    return state;
+}
+
+function handleNewEntry(state, action){
+    console.log("CLICKED!");
+    return state;
+}
 
 const reducer = (state = initialState, action) => {
     // return state;
     switch (action.type) {
         case actionTypes.HANDLE_INPUT:
-            return handleChange(state, action);
+            return onSearchInput(state, action);
+        case actionTypes.NEW_ENTRY_CLICK:
+            return handleNewEntry(state, action);
         default:
             return state;
     }

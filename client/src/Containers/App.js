@@ -27,8 +27,9 @@ class App extends Component {
 					<sidebar>
 						<Sidebar
 							searchFieldValue = {this.props.sidebar.searchFieldValue}
-							searchFieldInput = {this.props.onSearchInput}
-							sidebarItems ={this.props.sidebar.sidebarItems}
+							onSearchInput = {this.props.onSearchInput}
+							trendingItems ={this.props.sidebar.trendingItems}
+							click={this.props.onNewEntryClick}
 						/>
 					</sidebar>
 				</main>
@@ -50,7 +51,8 @@ const mapDispatchToProps = (dispatch) => {
 		onNameChange: (personId, val) => dispatch({type: actionTypes.UPDATE_NAMES, value: val, id: personId}),
 		onDeletePerson: (personId) => dispatch({type: actionTypes.DELETE_PERSON, personIndex: personId}),
 		onPersonToggle: () => dispatch({type: actionTypes.TOGGLE_PERSON}),
-		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value})
+		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value}),
+		onNewEntryClick: () => dispatch({type:actionTypes.NEW_ENTRY_CLICK})
 	};
 };
 
