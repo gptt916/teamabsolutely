@@ -16,6 +16,7 @@ const styles = {
 		width: '18%',
 		backgroundColor:'aquamarine',
 		height:'100%',
+		position: 'absolute'
 	},
 	cockPit:{
 		width:'82%'

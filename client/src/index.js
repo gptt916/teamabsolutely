@@ -29,7 +29,6 @@ const rootReducer = combineReducers({
     persons: personsReducer,
     showPersons: showPersonsReducer,
     navbar: navbarReducer,
-    cockpit: cockpitReducer,
     auth: authReducer,
     sidebar: sidebarReducer
 });
