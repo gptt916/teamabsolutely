@@ -12,12 +12,12 @@ function pushItemToDatabase(req, res, item) {
 }
 
 function createItem(req, res) {
-    item = itemService.createItem();
-    pushItemToDatabase(req, res, item, true);
+    item = itemService.createItem(req.body);
+    pushItemToDatabase(req, res, item);
 }
 
 function getItem(req, res) {
-    item = itemsService.getItem(req.params.imageId, function(item) {
+    item = itemService.getItem(req.params.imageId, function(item) {
         if (item.error) {
             return res.status(500).send(item.error);
         }
@@ -26,7 +26,7 @@ function getItem(req, res) {
 }
 
 function getAllItems(req, res) {
-    items = itemsService.getAllItems(function(items) {
+    items = itemService.getAllItems(function(items) {
         if (items.error) {
             return res.status(500).send(items.error);
         }
@@ -34,8 +34,18 @@ function getAllItems(req, res) {
     });
 }
 
+function rateItem(req, res) {
+    item = itemService.rateItem(req.body, function(item) {
+        if (item.error) {
+            return res.status(500).send(item.error);
+        }
+        res.status(200).send(item);
+    });
+}
+
 module.exports = {
     createItem,
     getAllItems,
-    getItem
+    getItem,
+    rateItem
 };

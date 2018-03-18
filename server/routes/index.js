@@ -17,11 +17,13 @@ router.get('/user/create', userCtrl.createUser);
 
 router.get('/user/getAll', userCtrl.getAllUsers);
 
-router.get('/items/create', itemCtrl.createItem);
-
-router.get('/items/:name/', itemCtrl.getItem);
+router.post('/items/create', itemCtrl.createItem);
 
 router.get('/items/getAll', itemCtrl.getAllItems);
+
+router.post('/items/rateItem', passportJWT, itemCtrl.rateItem);
+
+router.get('/items/:name/', itemCtrl.getItem);
 
   
 module.exports = router;

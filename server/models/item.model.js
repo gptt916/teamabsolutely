@@ -12,12 +12,12 @@ let itemSchema = mongoose.Schema({
         unique: false
     },
     dateSubmitted: {
-        type:String,
+        type:Date,
         required: true,
         unique: false
     },
     countYAY: {
-        type:String,
+        type:Number,
         required: true,
         unique: false
     },
@@ -29,6 +29,11 @@ let itemSchema = mongoose.Schema({
     tags: {
         type:String,
         required : false,
+        unique: false
+    },
+    src: {
+        type: String,
+        required: true,
         unique: false
     }
 });

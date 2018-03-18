@@ -20,14 +20,15 @@ function getTags(name) {
     });
 }
 
-function createItem(name, user, dateSubmitted) {
+function createItem(body) {
     var item = new Item({
-        name: name,
-        user: user,
-        dateSubmitted: dateSubmitted,
+        name: body.name,
+        user: body.user,
+        dateSubmitted: new Date(),
         countYAY: 0,
         countNAY: 0,
-        tags: name
+        tags: body.name,
+        src: body.src
     });
     return item;
 }
@@ -54,7 +55,28 @@ function getAllItems(callback) {
     });
 }
 
+function rateItem(body, callback) {
+    let command = {};
+    if (body.voteYAY) {
+        command = {countYAY: 1}
+    }
+    else {
+        command = {countNAY: 1}
+    }
+
+    Item.findOneAndUpdate({id: body.itemId}, { $inc: command })
+        .exec()
+        .then(doc => {
+            callback(doc);
+        })
+        .catch(err => {
+            callback({error: err});
+        });
+}
+
 module.exports = {
     createItem,
-    getAllItems
+    getAllItems,
+    getItem,
+    rateItem
 };
