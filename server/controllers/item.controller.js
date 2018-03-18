@@ -36,5 +36,6 @@ function getAllItems(req, res) {
 
 module.exports = {
     createItem,
-    getAllItems
+    getAllItems,
+    getItem
 };
