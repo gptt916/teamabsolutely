@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var Item = require('../models/item.model');
-var itemService = require('../services/user.service');
+var itemService = require('../services/item.service');
 
 function pushItemToDatabase(req, res, item) {
-    Item.create(user, function(err, data) {
+    Item.create(item, function(err, data) {
         if (err) {
             return res.status(500).send(err);
         }
@@ -12,12 +12,21 @@ function pushItemToDatabase(req, res, item) {
 }
 
 function createItem(req, res) {
-    user = userService.createItem();
-    pushItemToDatabase(req, res, user, true);
+    item = itemService.createItem();
+    pushItemToDatabase(req, res, item, true);
+}
+
+function getItem(req, res) {
+    item = itemsService.getItem(req.params.imageId, function(item) {
+        if (item.error) {
+            return res.status(500).send(item.error);
+        }
+        return res.status(200).send(item);
+    });
 }
 
 function getAllItems(req, res) {
-    items = itemsService.getAllItems(function(users) {
+    items = itemsService.getAllItems(function(items) {
         if (items.error) {
             return res.status(500).send(items.error);
         }

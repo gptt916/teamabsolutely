@@ -13,5 +13,16 @@ router.route('/auth/facebook')
 router.route('/secret')
   .get(passportJWT, userCtrl.secret);
 
+
+router.get('/user/create', userCtrl.createUser);
+
+router.get('/user/getAll', userCtrl.getAllUsers);
+
+router.get('/items/create', itemCtrl.createItem);
+
+router.get('/items/:name/', itemCtrl.getItem);
+
+router.get('/items/getAll', itemCtrl.getAllItems);
+
   
 module.exports = router;
