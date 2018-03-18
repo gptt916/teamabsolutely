@@ -5,7 +5,7 @@ const newEntry = (props) => {
     return (
         <div> 
             <button 
-            onClick={props.click}>Submit New Post</button>
+            onClick={props.toggleOverlay}>Submit New Post</button>
         </div>
     );
 };

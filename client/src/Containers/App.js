@@ -33,7 +33,7 @@ class App extends Component {
 							searchFieldValue = {this.props.sidebar.searchFieldValue}
 							onSearchInput = {this.props.onSearchInput}
 							trendingItems ={this.props.sidebar.trendingItems}
-							click={this.props.onNewEntryClick}
+							toggleOverlay={this.props.toggleOverlay}
 							showOverlay={this.props.sidebar.showOverlay}
 						/>
 					</div>
@@ -57,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 		onDeletePerson: (personId) => dispatch({type: actionTypes.DELETE_PERSON, personIndex: personId}),
 		onPersonToggle: () => dispatch({type: actionTypes.TOGGLE_PERSON}),
 		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value}),
-		onNewEntryClick: () => dispatch({type:actionTypes.NEW_ENTRY_CLICK})
+		toggleOverlay: () => dispatch({type:actionTypes.TOGGLE_OVERLAY})
 	};
 };
 

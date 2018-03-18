@@ -23,7 +23,7 @@
     box-shadow: 0 2px 3px #ccc
 } */
 
-#inputField{
+.newEntryForm{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,7 +33,6 @@
     border-radius:5px;
     border: 1px solid black;
     box-shadow:2px 2px 5px red;
-    /* color: white;
     transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%); */
+    -ms-transform: translate(-50%,-50%);
 }

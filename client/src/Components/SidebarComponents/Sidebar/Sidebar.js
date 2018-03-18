@@ -6,14 +6,12 @@ import NewEntry from '../NewEntry/NewEntry';
 import NewEntryForm from '../NewEntry/NewEntryForm/NewEntryForm'
 
 const sidebar = (props) => {
-    console.log(props.showOverlay);
-    // console.log(props.trendingItems);
     return (
         <div className={classes.container}>
             <SearchField onSearchInput={props.onSearchInput}/>
             <TrendingItems trendingItems={props.trendingItems}/>
-            <NewEntry click={props.click}/>
-            <NewEntryForm showOverlay={props.showOverlay}/>
+            <NewEntry toggleOverlay={props.toggleOverlay}/>
+            <NewEntryForm toggleOverlay={props.toggleOverlay} showOverlay={props.showOverlay}/>
         </div>
     );
 };
