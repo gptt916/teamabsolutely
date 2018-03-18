@@ -6,19 +6,22 @@ const trendingItems = (props) => {
     const items = props.trendingItems.map((item, index) => {
         return(
             <TrendingItem
-                destination={item.dest}
-                text={item.text}
-                key={index}
+            destination={item.dest}
+            text={item.text}
+            key={index}
             />
         )
     });
 
     return ( 
-        <side>
-            <ul>
-                {items}
-            </ul>
-        </side>
+        <div>
+            <div>Trending Items</div>
+            <div className = {classes.TrendingItemList}>
+                <ul>
+                    {items}
+                </ul>
+            </div>
+        </div>
     );
 };
 

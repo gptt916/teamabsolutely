@@ -12,6 +12,10 @@ const styles = {
 		margin:0,
 		height:"100%",
 	},
+	sideBar:{
+		width: '18%',
+		backgroundColor:'aquamarine'
+	}
 };
 class App extends Component {
   	render() {
@@ -24,14 +28,14 @@ class App extends Component {
                     <AuthComponent/>
 				</header>
 				<main>
-					<sidebar>
+					<div style={styles.sideBar}>
 						<Sidebar
 							searchFieldValue = {this.props.sidebar.searchFieldValue}
 							onSearchInput = {this.props.onSearchInput}
 							trendingItems ={this.props.sidebar.trendingItems}
 							click={this.props.onNewEntryClick}
 						/>
-					</sidebar>
+					</div>
 				</main>
 			</div>);
     }
