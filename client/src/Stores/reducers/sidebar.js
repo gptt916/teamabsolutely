@@ -23,7 +23,6 @@ function onSearchInput(state, action) {
 // Toggles the new entry overlay
 function toggleOverlay(state, action){
     let overlay = state.showOverlay;
-    console.log(state.searchFieldValue.value);
     return{
         ...state,
         showOverlay: !overlay
