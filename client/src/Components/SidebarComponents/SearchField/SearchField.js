@@ -4,10 +4,11 @@ import classes from './SearchField.css';
 const searchField = (props) => {
     const style ={
         inputBox : {
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            width: '75%'
+            // border: '1px solid blue',
+            width: '75%',
+            border: '1px solid #eee',
+            boxShadow: '0 2px 2px #ccc',
+            borderRadius:'5px',
         },
         searchComponents:{
             marginBottom:'20px'
@@ -17,11 +18,11 @@ const searchField = (props) => {
     return (
         <form onSubmit={props.handleSubmit} style={style.searchComponents}>
             <label>
-                <div>Search:</div>
+                <div>Search Entries:</div>
                 <input type="text" style={style.inputBox} value={props.value} onChange={(event)=>props.onSearchInput(event.target.value)} />
             </label>
             <div>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Search" />
             </div>
         </form>
     );
