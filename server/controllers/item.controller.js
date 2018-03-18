@@ -17,7 +17,7 @@ function createItem(req, res) {
 }
 
 function getItem(req, res) {
-    item = itemService.getItem(req.params.imageId, function(item) {
+    item = itemService.getItem(req.params.name, function(item) {
         if (item.error) {
             return res.status(500).send(item.error);
         }
