@@ -9,22 +9,21 @@ const initialState = {
     searchFieldValue: [
         {value: ''}
     ],
-    showOverlay: true
+    showOverlay: false
 }
 
 // Sets searchFieldValue state on every input
 function onSearchInput(state, action) {
-    console.log(action.value);
     return {
         ...state,
-        searchFieldValue: action.value
+        searchFieldValue: {value: action.value}
     }
 }
 
 // Toggles the new entry overlay
 function toggleOverlay(state, action){
     let overlay = state.showOverlay;
-    console.log(overlay);
+    console.log(state.searchFieldValue.value);
     return{
         ...state,
         showOverlay: !overlay
@@ -32,7 +31,7 @@ function toggleOverlay(state, action){
 }
 // Handles search submit click
 function handleSubmit(state, action) {
-    alert('A name was submitted: ' + action.value);
+    alert('A name was submitted: ' + state.searchFieldValue.value);
     action.preventDefault();
     return state;
 }
@@ -44,6 +43,8 @@ const reducer = (state = initialState, action) => {
             return onSearchInput(state, action);
         case actionTypes.TOGGLE_OVERLAY:
             return toggleOverlay(state, action);
+        case actionTypes.HANDLE_SEARCH_SUBMIT:
+            return handleSubmit(state, action);
         default:
             return state;
     }

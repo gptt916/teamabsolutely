@@ -31,6 +31,7 @@ class App extends Component {
 					<div style={styles.sideBar}>
 						<Sidebar
 							searchFieldValue = {this.props.sidebar.searchFieldValue}
+							onSearchSubmit = {this.props.onSearchSubmit}
 							onSearchInput = {this.props.onSearchInput}
 							trendingItems ={this.props.sidebar.trendingItems}
 							toggleOverlay={this.props.toggleOverlay}
@@ -57,7 +58,8 @@ const mapDispatchToProps = (dispatch) => {
 		onDeletePerson: (personId) => dispatch({type: actionTypes.DELETE_PERSON, personIndex: personId}),
 		onPersonToggle: () => dispatch({type: actionTypes.TOGGLE_PERSON}),
 		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value}),
-		toggleOverlay: () => dispatch({type:actionTypes.TOGGLE_OVERLAY})
+		toggleOverlay: () => dispatch({type:actionTypes.TOGGLE_OVERLAY}),
+		onSearchSubmit: () => dispatch({type:actionTypes.HANDLE_SEARCH_SUBMIT})
 	};
 };
 

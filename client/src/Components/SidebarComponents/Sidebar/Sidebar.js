@@ -8,7 +8,7 @@ import NewEntryForm from '../NewEntry/NewEntryForm/NewEntryForm'
 const sidebar = (props) => {
     return (
         <div className={classes.container}>
-            <SearchField onSearchInput={props.onSearchInput}/>
+            <SearchField onSearchInput={props.onSearchInput} handleSubmit={props.onSearchSubmit}/>
             <TrendingItems trendingItems={props.trendingItems}/>
             <NewEntry toggleOverlay={props.toggleOverlay}/>
             <NewEntryForm toggleOverlay={props.toggleOverlay} showOverlay={props.showOverlay}/>
