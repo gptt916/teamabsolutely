@@ -27,5 +27,6 @@ router.post('/items/rateItem', passportJWT, itemCtrl.rateItem);
 
 router.get('/items/:name/', itemCtrl.getItem);
 
-  
+router.get('/items/search/:search/', itemCtrl.searchItems);
+
 module.exports = router;
