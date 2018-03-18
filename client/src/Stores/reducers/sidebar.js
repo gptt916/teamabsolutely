@@ -8,7 +8,8 @@ const initialState = {
     ],
     searchFieldValue: [
         {value: ''}
-    ]
+    ],
+    showOverlay: true
 }
 
 // Sets searchFieldValue state on every input

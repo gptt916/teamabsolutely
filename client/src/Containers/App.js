@@ -34,6 +34,7 @@ class App extends Component {
 							onSearchInput = {this.props.onSearchInput}
 							trendingItems ={this.props.sidebar.trendingItems}
 							click={this.props.onNewEntryClick}
+							showOverlay={this.props.sidebar.showOverlay}
 						/>
 					</div>
 				</main>
@@ -46,7 +47,7 @@ const mapStateToProps = (state) => {
 		persons: state.persons.persons,
 		showPersons: state.showPersons.showPersons,
 		navbarItems: state.navbar.navbarItems,
-		sidebar: state.sidebar
+		sidebar: state.sidebar,
 	};
 };
 
