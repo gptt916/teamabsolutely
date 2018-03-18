@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './NavbarItems.css';
 import NavbarItem from './NavbarItem/NavbarItem';
+import './NavbarItems.css';
 
 const navbarItems = (props) => {
     const items = props.navbarItems.map((item, index) => {

@@ -35,7 +35,7 @@ function getAllItems(req, res) {
 }
 
 function rateItem(req, res) {
-    item = itemService.rateItem(req.body, function(item) {
+    itemService.rateItem(req.user, req.body, function(item) {
         if (item.error) {
             return res.status(500).send(item.error);
         }

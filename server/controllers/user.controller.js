@@ -48,6 +48,15 @@ function getAllUsers(req, res) {
     });
 }
 
+function getAllUseerVotes(req, res) {
+    users = userService.getAllUserVotes(req.user, function(votes) {
+        if (votes.error) {
+            return res.status(500).send(votes.error);
+        }
+        return res.status(200).send(votes);
+    });
+}
+
 function secret(req, res) {
     res.status(200).json({key: "super duper secret" });
 }
@@ -62,5 +71,6 @@ module.exports = {
     createUser,
     getAllUsers,
     facebookOAuth,
-    secret
+    secret,
+    getAllUseerVotes
 };

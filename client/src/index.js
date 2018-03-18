@@ -9,13 +9,21 @@ import { Provider } from 'react-redux';
 import personsReducer from './Stores/reducers/persons';
 import showPersonsReducer from './Stores/reducers/showPersons';
 import navbarReducer from './Stores/reducers/navbar';
-import cockpitReducer from './Stores/reducers/cockpit';
 import authReducer from './Stores/reducers/auth';
 import sidebarReducer from './Stores/reducers/sidebar';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
+axios.interceptors.request.use(request => {
+    request.headers.Authorization = cookies.get('access_token');
+    return request;
+}, error => {
+    Promise.reject(error);
+});
 
 const rootReducer = combineReducers({
     persons: personsReducer,

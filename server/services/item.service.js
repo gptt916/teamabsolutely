@@ -1,4 +1,5 @@
 var Item = require('../models/item.model');
+var User = require('../models/user.model');
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
@@ -55,23 +56,55 @@ function getAllItems(callback) {
     });
 }
 
-function rateItem(body, callback) {
-    let command = {};
-    if (body.voteYAY) {
-        command = {countYAY: 1}
+function rateItem(user, body, callback) {
+    var existingVote = user.votes.filter(item => item.itemId == body.itemId);
+
+    var command = {};
+
+    if (existingVote.length > 0) {
+        if (existingVote[0].voteYAY === body.voteYAY) {
+            callback({error: "Can only vote once"});
+        }
+        else {
+            if (body.voteYAY) {
+                command = {'countYAY': 1, 'countNAY': -1}
+            }
+            else {
+                command = {'countYAY': -1, 'countNAY': 1}
+            }
+
+            User.update({'votes.itemId': body.itemId}, {$set: {'votes.$.voteYAY': body.voteYAY}}).exec();
+            
+
+            Item.findOneAndUpdate({_id: body.itemId}, { $inc: command }, {new: true})
+            .exec()
+            .then(doc => {
+                callback(doc);
+            })
+            .catch(err => {
+                callback({error: err});
+            });
+        }
     }
     else {
-        command = {countNAY: 1}
-    }
-
-    Item.findOneAndUpdate({id: body.itemId}, { $inc: command })
-        .exec()
-        .then(doc => {
-            callback(doc);
-        })
-        .catch(err => {
-            callback({error: err});
-        });
+        if (body.voteYAY) {
+            command = {countYAY: 1}
+        }
+        else {
+            command = {countNAY: 1}
+        }
+    
+        Item.findOneAndUpdate({itemId: body.itemId}, { $inc: command }, {new: true})
+            .exec()
+            .then(doc => {
+                user.votes.push({'itemId': body.itemId, 'voteYAY': body.voteYAY});
+                user.save();
+                callback(doc);
+            })
+            .catch(err => {
+                callback({error: err});
+            });
+    }    
 }
 
 module.exports = {
