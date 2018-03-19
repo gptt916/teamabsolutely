@@ -21,7 +21,7 @@ class MainComponent extends Component {
                 <Sidebar/>
             </div>
             <div style={styles.cockPit}>
-                <Route path='/' component={Cockpit}/>
+                <Route exact path='/' component={Cockpit}/>
                 <Route path='/:id' component={Cockpit}/>
             </div>
         </main>
