@@ -16,12 +16,30 @@ function createItem(req, res) {
     pushItemToDatabase(req, res, item);
 }
 
+function searchItems(req, res) {
+    items = itemService.searchItems(req.params.search, function(items) {
+        if (items.error) {
+            return res.status(500).send(items.error);
+        }
+        return res.status(200).send(items);
+    });
+}
+
 function getItem(req, res) {
-    item = itemService.getItem(req.params.imageId, function(item) {
+    item = itemService.getItem(req.params.name, function(item) {
         if (item.error) {
             return res.status(500).send(item.error);
         }
         return res.status(200).send(item);
+    });
+}
+
+function getTrending(req, res) {
+    items = itemService.getTrending(function(items) {
+        if (items.error) {
+            return res.status(500).send(items.error);
+        }
+        return res.status(200).send(items);
     });
 }
 
@@ -47,5 +65,7 @@ module.exports = {
     createItem,
     getAllItems,
     getItem,
+    searchItems,
+    getTrending,
     rateItem
 };

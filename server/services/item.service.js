@@ -34,8 +34,37 @@ function createItem(body) {
     return item;
 }
 
+function searchItems(search, callback) {
+    var regex = new RegExp(search, 'i');
+
+    Item.find({'name': regex})
+    .exec()
+    .then(docs => {
+        callback(docs);
+    })
+    .catch(err => {
+        callback({error: err});
+    });
+}
+
 function getItem(name, callback) {
     Item.findOne({'name': name})
+    .exec()
+    .then(docs => {
+        callback(docs);
+    })
+    .catch(err => {
+        callback({error: err});
+    });
+}
+
+function getTrending(callback) {
+    Item.aggregate([
+        {$match: {}},
+        {$addFields: {
+            totalVotes: {$sum: ["$countYAY", "$countNAY"]}}},
+        {$sort : { totalVotes : -1} }])
+    .limit(3)
     .exec()
     .then(docs => {
         callback(docs);
@@ -74,7 +103,7 @@ function rateItem(user, body, callback) {
             }
 
             User.update({'votes.itemId': body.itemId}, {$set: {'votes.$.voteYAY': body.voteYAY}}).exec();
-            
+
 
             Item.findOneAndUpdate({_id: body.itemId}, { $inc: command }, {new: true})
             .exec()
@@ -93,7 +122,7 @@ function rateItem(user, body, callback) {
         else {
             command = {countNAY: 1}
         }
-    
+
         Item.findOneAndUpdate({itemId: body.itemId}, { $inc: command }, {new: true})
             .exec()
             .then(doc => {
@@ -104,12 +133,14 @@ function rateItem(user, body, callback) {
             .catch(err => {
                 callback({error: err});
             });
-    }    
+    }
 }
 
 module.exports = {
     createItem,
     getAllItems,
     getItem,
+    searchItems,
+    getTrending,
     rateItem
 };
