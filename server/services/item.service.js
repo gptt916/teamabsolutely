@@ -64,7 +64,7 @@ function getTrending(callback) {
         {$addFields: {
             totalVotes: {$sum: ["$countYAY", "$countNAY"]}}},
         {$sort : { totalVotes : -1} }])
-    .limit(3)
+    .limit(10)
     .exec()
     .then(docs => {
         callback(docs);

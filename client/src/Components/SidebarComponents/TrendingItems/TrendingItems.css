@@ -17,13 +17,6 @@
     padding-top: 15px;
   }
   
-  .TrendingItemList a {
-    color: #444;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
-  
   .TrendingItemList a:hover {
     color: #000;
   }

@@ -1,0 +1,17 @@
+.container {
+    border: 2px solid black;
+    width: 200px;
+    height: 60px;
+    background: brown;
+    vertical-align: center;
+}
+
+.container:hover {
+    cursor: pointer;
+}
+
+.text {
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+}
