@@ -5,8 +5,8 @@
 .mainImg {
     margin-top: 20px;
     border: 10px solid brown;
-    max-width: 600px;
-    max-height: 480px;
+    width: 600px;
+    height: 480px;
     background: black;
 }
 

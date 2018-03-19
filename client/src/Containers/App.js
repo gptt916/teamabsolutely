@@ -18,8 +18,7 @@ const styles = {
 		height:'100%',
 	},
 	cockPit:{
-		width:'100%',
-		'justify-content': 'center !important'
+		width:'100%'
 	}
 };
 class App extends Component {

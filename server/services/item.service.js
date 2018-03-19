@@ -123,7 +123,7 @@ function rateItem(user, body, callback) {
             command = {countNAY: 1}
         }
 
-        Item.findOneAndUpdate({itemId: body.itemId}, { $inc: command }, {new: true})
+        Item.findOneAndUpdate({_id: body.itemId}, { $inc: command }, {new: true})
             .exec()
             .then(doc => {
                 user.votes.push({'itemId': body.itemId, 'voteYAY': body.voteYAY});

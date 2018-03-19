@@ -15,7 +15,6 @@ class Cockpit extends Component {
     componentDidMount () {
         axios.get('items/getAll')
             .then(response => {
-                console.log(response);
                 const items = response.data.map(item => {
                     if (item.countNAY === 0 && item.countYAY === 0) {
                         item.yayPercent = 50;
@@ -33,12 +32,21 @@ class Cockpit extends Component {
         
         axios.get('user/getAllUserVotes')
             .then(response => {
-                console.log(response);
                 this.setState({votes: response.data.votes});
             })
             .catch(error => {
                 console.log(error);
             });
+    }
+
+    onNextClick() {
+        const newIndex = this.state.activeIndex == this.state.items.length - 1 ? 0 : this.state.activeIndex + 1;
+        this.setState({activeIndex: newIndex});
+    }
+
+    onPrevClick() {
+        const newIndex = this.state.activeIndex == 0 ? this.state.items.length - 1 : this.state.activeIndex - 1;
+        this.setState({activeIndex: newIndex});
     }
 
     vote (val) {
@@ -53,14 +61,27 @@ class Cockpit extends Component {
             .then(response => {
                 let items = [...this.state.items];
                 let item = response.data;
-                item.yayPercent = Math.round(((item.countYAY) / (item.countNAY + item.countYAY)) * 100)
+                if (item.countNAY === 0 && item.countYAY === 0) {
+                    item.yayPercent = 50;
+                }
+                else {
+                    item.yayPercent = Math.round(((item.countYAY) / (item.countNAY + item.countYAY)) * 100)
+                }
+
                 items[this.state.activeIndex] = item;
                 let votes = [...this.state.votes];
                 vote = votes.find(vote => vote.itemId === this.state.items[this.state.activeIndex]._id);
-                vote.voteYAY = val;
+                if (!vote) {
+                    vote = {itemId: this.state.items[this.state.activeIndex]._id, voteYAY: val};
+                    votes.push(vote);
+                }
+                else {
+                    vote.voteYAY = val;
+                }
                 this.setState({items: items, votes: votes});
             })
             .catch(err => {
+                console.log(err);
                 window.alert("YOU MUST SIGN IN TO VOTE!");
             });
     }
@@ -85,7 +106,7 @@ class Cockpit extends Component {
             }
             res = (
             <div>
-                <h3 className={classes.imageTitle}>{this.state.items[this.state.activeIndex].title}</h3>
+                <h3 className={classes.imageTitle}>{this.state.items[this.state.activeIndex].name}</h3>
                 <div className={classes.container}>
                     <img onClick={() => this.vote(false)} alt="thumbsDown" className={[classes.rateImg, greyNAY].join(' ')} src={thumbsDown}/>
                     <img alt="main" className={classes.mainImg} src={this.state.items[this.state.activeIndex].src}/>
@@ -96,8 +117,8 @@ class Cockpit extends Component {
                     <Progress className={[classes.progressBar, classes.progressBarText].join(' ')} bar value={this.state.items[this.state.activeIndex].yayPercent} max={100}>{this.state.items[this.state.activeIndex].yayPercent}%</Progress>
                 </Progress>
                 <div className={classes.navButtons}>
-                    <button onClick={this.state.cockpitPrev}className={classes.prevButton}>Prev</button>
-                    <button onClick={this.state.cockpitNext}className={classes.nextButton}>Next</button>
+                    <button onClick={() => this.onPrevClick()}className={classes.prevButton}>Prev</button>
+                    <button onClick={() => this.onNextClick()} className={classes.nextButton}>Next</button>
                 </div>
             </div>
             );
