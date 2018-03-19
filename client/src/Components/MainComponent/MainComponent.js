@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 const styles = {
     sideBar:{
 		width: '100%',
-		backgroundColor:'lightgrey',
+		backgroundColor:'white',
 		height:'100%',
 	},
 	cockPit:{

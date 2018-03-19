@@ -30,16 +30,16 @@ class TrendingItems extends Component {
                 />
             )
         });
-        return ( 
+        return (
             <div>
-                <h1>Trending Items</h1>
+                <h1 style={{color:'#494949', backgroundColor:'lightgrey'}}>Menu</h1>
                 <div className = {classes.TrendingItemList}>
                     <ul>
                         {items}
                     </ul>
                 </div>
             </div>
-        ); 
+        );
     }
 }
 

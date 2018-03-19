@@ -8,9 +8,9 @@ const trendingItem = (props) => {
     if (newText.length > 15) {
         newText = newText.substring(0, 12) + '...';
     }
-    
+
     return (
-            <li>
+            <li className={classes.w3BarItem + ' ' + classes.w3Button} >
                 <Link to={"/" + props.itemId}>
                     <div className={classes.container}>
                         <p className={classes.text}>{newText}</p>

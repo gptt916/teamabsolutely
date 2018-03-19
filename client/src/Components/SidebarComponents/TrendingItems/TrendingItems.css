@@ -4,36 +4,36 @@
     justify-content: center;
     margin-bottom:20px;
   }
-  
+
   .TrendingItemList ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  
+
   .TrendingItemList li {
     display: flex;
     margin-bottom:0px;
     padding-top: 15px;
   }
-  
+
   .TrendingItemList a:hover {
     color: #000;
   }
-  
+
   /* .TrendingItemList a::before {
     content: '';
     display: block;
     height: 5px;
     background-color: #444;
-  
+
     position: absolute;
     top: 0;
     width: 0%;
-  
+
     transition: all ease-in-out 250ms;
   }
-  
+
   .TrendingItemList a:hover::before {
     width: 100%;
   }
