@@ -34,6 +34,15 @@ function getItem(req, res) {
     });
 }
 
+function getTrending(req, res) {
+    items = itemService.getTrending(function(items) {
+        if (items.error) {
+            return res.status(500).send(items.error);
+        }
+        return res.status(200).send(items);
+    });
+}
+
 function getAllItems(req, res) {
     items = itemService.getAllItems(function(items) {
         if (items.error) {
@@ -57,5 +66,6 @@ module.exports = {
     getAllItems,
     getItem,
     searchItems,
+    getTrending,
     rateItem
 };

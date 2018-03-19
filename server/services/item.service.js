@@ -58,6 +58,22 @@ function getItem(name, callback) {
     });
 }
 
+function getTrending(callback) {
+    Item.aggregate([
+        {$match: {}},
+        {$addFields: {
+            totalVotes: {$sum: ["$countYAY", "$countNAY"]}}},
+        {$sort : { totalVotes : -1} }])
+    .limit(3)
+    .exec()
+    .then(docs => {
+        callback(docs);
+    })
+    .catch(err => {
+        callback({error: err});
+    });
+}
+
 function getAllItems(callback) {
     Item.find()
     .exec()
@@ -125,5 +141,6 @@ module.exports = {
     getAllItems,
     getItem,
     searchItems,
+    getTrending,
     rateItem
 };

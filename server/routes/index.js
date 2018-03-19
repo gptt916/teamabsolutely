@@ -25,6 +25,8 @@ router.get('/items/getAll', itemCtrl.getAllItems);
 
 router.post('/items/rateItem', passportJWT, itemCtrl.rateItem);
 
+router.get('/items/getTrending/', itemCtrl.getTrending);
+
 router.get('/items/:name/', itemCtrl.getItem);
 
 router.get('/items/search/:search/', itemCtrl.searchItems);
