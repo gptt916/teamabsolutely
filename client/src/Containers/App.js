@@ -13,13 +13,13 @@ const styles = {
 		height:"100%",
 	},
 	sideBar:{
-		width: '18%',
-		backgroundColor:'aquamarine',
+		width: '100%',
+		backgroundColor:'lightgrey',
 		height:'100%',
-		position: 'absolute'
 	},
 	cockPit:{
-		width:'82%'
+		width:'100%',
+		'justify-content': 'center !important'
 	}
 };
 class App extends Component {

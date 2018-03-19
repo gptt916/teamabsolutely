@@ -3,9 +3,9 @@
 }
 
 main {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
+  display: grid !important;
+  grid-template-columns: 300px auto;
+  justify-content: left;
   height: 100%;
 }
 
