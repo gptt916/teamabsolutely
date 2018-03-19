@@ -13,6 +13,7 @@ import authReducer from './Stores/reducers/auth';
 import sidebarReducer from './Stores/reducers/sidebar';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { BrowserRouter } from 'react-router-dom';
 
 const cookies = new Cookies();
 
@@ -36,7 +37,9 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 
 ReactDOM.render(<Provider store={store}>
-                    <App />
+                    <BrowserRouter>
+                        <App />
+                    </BrowserRouter>
                 </Provider>, 
                 document.getElementById('root'));
 registerServiceWorker();

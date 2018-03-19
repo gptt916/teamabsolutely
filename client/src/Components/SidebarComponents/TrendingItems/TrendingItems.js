@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './TrendingItems.css';
 import TrendingItem from './TrendingItem/TrendingItem';
 import axios from 'axios';
+import { withRouter} from 'react-router-dom';
 
 class TrendingItems extends Component {
     state = {
@@ -25,6 +26,7 @@ class TrendingItems extends Component {
                 destination={item.dest}
                 text={item.name}
                 key={item._id}
+                itemId={item._id}
                 />
             )
         });
@@ -41,4 +43,4 @@ class TrendingItems extends Component {
     }
 }
 
-export default TrendingItems;
+export default withRouter(TrendingItems);

@@ -4,6 +4,7 @@ import thumbsDown from '../../../assets/thumbs_down.png';
 import thumbsUp from '../../../assets/thumbs_up.png';
 import { Progress } from 'reactstrap';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Cockpit extends Component {
     state = {
@@ -11,6 +12,7 @@ class Cockpit extends Component {
         items: [],
         votes: []
     }
+
 
     componentDidMount () {
         axios.get('items/getAll')
@@ -24,7 +26,12 @@ class Cockpit extends Component {
                     }
                     return item;
                 });
-                this.setState({items: items});
+
+                var currIndex = 0;
+                if (this.props.match && this.props.match.params.id) {
+                    currIndex = items.map((item) => item._id).indexOf(this.props.match.params.id);
+                }
+                this.setState({items: items, activeIndex: currIndex >= 0 ? currIndex : 0});
             })
             .catch(error => {
                 console.log(error);
@@ -39,13 +46,27 @@ class Cockpit extends Component {
             });
     }
 
+    componentWillReceiveProps() {
+        var currIndex = 0;
+        if (this.props.history && this.props.history.location.pathname) {
+            currIndex = this.state.items.map((item) => item._id).indexOf(this.props.history.location.pathname.substring(1));
+        }
+        this.setState({activeIndex: currIndex >= 0 ? currIndex : 0});
+    }
+
+    componentDidUpdate() {
+        //console.log(this.props);
+    }
+
     onNextClick() {
-        const newIndex = this.state.activeIndex == this.state.items.length - 1 ? 0 : this.state.activeIndex + 1;
+        const newIndex = this.state.activeIndex === this.state.items.length - 1 ? 0 : this.state.activeIndex + 1;
+        this.props.history.push('/' + this.state.items[newIndex]._id);
         this.setState({activeIndex: newIndex});
     }
 
     onPrevClick() {
-        const newIndex = this.state.activeIndex == 0 ? this.state.items.length - 1 : this.state.activeIndex - 1;
+        const newIndex = this.state.activeIndex === 0 ? this.state.items.length - 1 : this.state.activeIndex - 1;
+        this.props.history.push('/' + this.state.items[newIndex]._id);
         this.setState({activeIndex: newIndex});
     }
 
@@ -131,4 +152,4 @@ class Cockpit extends Component {
     }
 };
 
-export default Cockpit;
+export default withRouter(Cockpit);

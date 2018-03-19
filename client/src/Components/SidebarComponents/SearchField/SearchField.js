@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './SearchField.css';
   
 const searchField = (props) => {
     const style ={

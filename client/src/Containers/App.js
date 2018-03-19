@@ -4,24 +4,19 @@ import Cockpit from '../Components/CockpitComponents/Cockpit/Cockpit';
 import Navbar from '../Components/NavbarComponents/Navbar/Navbar';
 import Sidebar from '../Components/SidebarComponents/Sidebar/Sidebar';
 import AuthComponent from '../Components/AuthComponent/AuthComponent';
+import MainComponent from '../Components/MainComponent/MainComponent';
 import { connect } from 'react-redux';
 import * as actionTypes from '../Stores/actions';
+import { Route } from 'react-router-dom';
 
 const styles = {
 	appContainer:{
 		margin:0,
 		height:"100%",
-	},
-	sideBar:{
-		width: '100%',
-		backgroundColor:'lightgrey',
-		height:'100%',
-	},
-	cockPit:{
-		width:'100%'
 	}
 };
 class App extends Component {
+	
   	render() {
         return (
             <div className={classes.mainApp} style={styles.appContainer}>
@@ -34,29 +29,9 @@ class App extends Component {
 					isLoggedIn={this.props.isLoggedIn}
 					setLoggedIn={this.props.setLoggedIn}/>
 				</header>
-				<main>
-					<div style={styles.sideBar}>
-						<Sidebar 
-							searchFieldValue = {this.props.sidebar.searchFieldValue}
-							onSearchSubmit = {this.props.onSearchSubmit}
-							onSearchInput = {this.props.onSearchInput}
-							trendingItems ={this.props.sidebar.trendingItems}
-							toggleOverlay={this.props.toggleOverlay}
-							showOverlay={this.props.sidebar.showOverlay}
-						/>
-					</div>
-					<div style={styles.cockPit}>
-						<Cockpit
-							items={this.props.cockpitItems}
-							activeIndex={this.props.activeIndex}
-							onExiting={this.props.onExiting}
-							onExited={this.props.onExited}
-							cockpitNext={this.props.cockpitNext}
-							cockpitPrev={this.props.cockpitPrev}
-						/>
-					</div>
-				</main>
-			</div>);
+				<MainComponent/>
+			</div>
+		);
     }
 }
 
@@ -84,4 +59,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure: false})(App);

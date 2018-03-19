@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Sidebar.css';
 import TrendingItems from '../TrendingItems/TrendingItems';
-import SearchField from '../SearchField/SearchField';
-import NewEntry from '../NewEntry/NewEntry';
-import NewEntryForm from '../NewEntry/NewEntryForm/NewEntryForm'
+import { withRouter } from 'react-router-dom';
 
-const sidebar = (props) => {
-    return (
-        <div className={classes.container}>
-            <TrendingItems trendingItems={props.trendingItems}/>
-        </div>
-    );
-};
+class Sidebar extends Component {
+    render() {
+        return (
+            <div className={classes.container}>
+                <TrendingItems/>
+            </div>
+        );
+    }
+}
 
-export default sidebar;
+export default withRouter(Sidebar);
 

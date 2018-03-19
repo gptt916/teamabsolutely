@@ -6,6 +6,10 @@
     vertical-align: center;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .container:hover {
     cursor: pointer;
 }
