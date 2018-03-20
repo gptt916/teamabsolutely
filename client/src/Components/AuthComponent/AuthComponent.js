@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import classes from './AuthComponent.css';
 
 const cookies = new Cookies();
 
@@ -56,6 +57,6 @@ export default class AuthComponent extends Component {
         if (!this.props.isLoggedIn) {
             header = <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>;
         }
-        return <div>{header}</div>;
+        return <div className={classes.authComponent}>{header}</div>;
     }
 }

@@ -1,7 +1,6 @@
 const initialState = {
     navbarItems: [
-        {dest: "#", text: "Home"},
-        {dest: "#", text: "About"}
+        {dest: "#", text: "New Item"}
     ]
 }
 
