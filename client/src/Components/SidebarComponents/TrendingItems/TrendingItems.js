@@ -7,7 +7,7 @@ import { withRouter} from 'react-router-dom';
 class TrendingItems extends Component {
     state = {
         items: []
-    }
+    };
 
     componentDidMount () {
         axios.get('items/getTrending')
@@ -30,9 +30,18 @@ class TrendingItems extends Component {
                 />
             )
         });
+
+        const styles= {
+            menu:{
+                color:'#494949', 
+                backgroundColor:'lightgrey',
+                width:'255px',
+                borderBottom:'1px solid black'
+            }
+        }
         return (
             <div>
-                <h1 style={{color:'#494949', backgroundColor:'lightgrey'}}>Menu</h1>
+                <h1 style={styles.menu}>Menu</h1>
                 <div className = {classes.TrendingItemList}>
                     <ul>
                         {items}

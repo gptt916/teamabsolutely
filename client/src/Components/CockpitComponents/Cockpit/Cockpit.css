@@ -4,10 +4,11 @@
 
 .mainImg {
     margin-top: 20px;
-    border: 10px solid brown;
+    border: 10px solid black;
     width: 600px;
     height: 480px;
     background: black;
+    border-radius:5px;
 }
 
 .rateImg {
@@ -25,7 +26,7 @@
 
 .progressBarContainer {
     margin-top: 5px !important;
-    background: #222 !important;
+    background: #29303B !important;
     align-self: center;
     width: 600px;
     height: 50px;

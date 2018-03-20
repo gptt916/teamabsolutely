@@ -1,6 +1,7 @@
 
 nav {
     float: right;
+    transform:translate(-100px, 0)
   }
   
   nav ul {
@@ -11,10 +12,8 @@ nav {
   
   nav li {
     display: inline-block;
-    margin-left: 70px;
     padding-top: 23px;
-  
-    position: relative;
+    /* position: relative; */
   }
   
   nav a {

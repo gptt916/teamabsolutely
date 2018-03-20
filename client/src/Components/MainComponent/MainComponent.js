@@ -4,12 +4,12 @@ import Sidebar from '../SidebarComponents/Sidebar/Sidebar';
 import { Route } from 'react-router-dom';
 const styles = {
     sideBar:{
-		width: '100%',
-		backgroundColor:'white',
+		width: '255px',
+		backgroundColor:'whitesmoke',
 		height:'100%',
 	},
 	cockPit:{
-		width:'100%'
+        backgroundColor:'#29303B'
 	}
 }
 
