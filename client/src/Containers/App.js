@@ -23,6 +23,8 @@ class App extends Component {
                 <header>
                     <Navbar
 						navbarItems={this.props.navbarItems}
+						showOverlay={this.props.showOverlay}
+						toggleOverlay={this.props.toggleOverlay}
 					/>
                     <AuthComponent
 					access_token={this.props.access_token}
@@ -40,6 +42,7 @@ const mapStateToProps = (state) => {
 		persons: state.persons.persons,
 		showPersons: state.showPersons.showPersons,
 		navbarItems: state.navbar.navbarItems,
+		showOverlay: state.navbar.showOverlay,
 		isLoggedIn: state.auth.isLoggedIn,
 		access_token: state.auth.access_token,
 		sidebar: state.sidebar,

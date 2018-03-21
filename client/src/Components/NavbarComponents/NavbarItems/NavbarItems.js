@@ -15,7 +15,7 @@ const navbarItems = (props) => {
 
     return ( 
         <nav>
-            <ul>
+            <ul onClick = {props.toggleOverlay}>
                 {items}
             </ul>
         </nav>
