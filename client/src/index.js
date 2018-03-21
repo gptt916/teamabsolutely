@@ -4,18 +4,20 @@ import './index.css';
 import App from './Containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import personsReducer from './Stores/reducers/persons';
 import showPersonsReducer from './Stores/reducers/showPersons';
 import navbarReducer from './Stores/reducers/navbar';
 import authReducer from './Stores/reducers/auth';
-import sidebarReducer from './Stores/reducers/sidebar';
+import mainReducer from './Stores/reducers/main';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { BrowserRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
 const cookies = new Cookies();
+
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -31,11 +33,21 @@ const rootReducer = combineReducers({
     showPersons: showPersonsReducer,
     navbar: navbarReducer,
     auth: authReducer,
-    sidebar: sidebarReducer
+    main: mainReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
+const logger = (store) => {
+    return (next) => {
+        return (action) => {
+            console.log('[Middleware] Dispatching', action);
+            const result = next(action);
+            console.log('[MiddleWare] next state', store.getState());
+            return result;
+        }
+    }
+}
 ReactDOM.render(<Provider store={store}>
                     <BrowserRouter>
                         <App />

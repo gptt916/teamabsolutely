@@ -6,7 +6,7 @@ import Sidebar from '../Components/SidebarComponents/Sidebar/Sidebar';
 import AuthComponent from '../Components/AuthComponent/AuthComponent';
 import MainComponent from '../Components/MainComponent/MainComponent';
 import { connect } from 'react-redux';
-import * as actionTypes from '../Stores/actions';
+import * as actionTypes from '../Stores/actions/actions';
 import { Route } from 'react-router-dom';
 
 const styles = {

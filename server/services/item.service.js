@@ -89,7 +89,6 @@ function rateItem(user, body, callback) {
     var existingVote = user.votes.filter(item => item.itemId == body.itemId);
 
     var command = {};
-
     if (existingVote.length > 0) {
         if (existingVote[0].voteYAY === body.voteYAY) {
             callback({error: "Can only vote once"});

@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actions';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();

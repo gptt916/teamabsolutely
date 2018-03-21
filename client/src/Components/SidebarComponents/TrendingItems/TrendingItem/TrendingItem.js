@@ -10,13 +10,13 @@ const trendingItem = (props) => {
     }
 
     return (
-            <li className={classes.w3BarItem + ' ' + classes.w3Button} >
-                <Link to={"/" + props.itemId}>
+        <Link to={"/" + props.itemId} onClick={props.getAllItems}>
+            <li className={classes.w3BarItem + ' ' + classes.w3Button}>
                     <div className={classes.container}>
                         <p className={classes.text}>{newText}</p>
                     </div>
-                </Link>
             </li>
+        </Link>
     );
 };
 

@@ -5,28 +5,19 @@ import axios from 'axios';
 import { withRouter} from 'react-router-dom';
 
 class TrendingItems extends Component {
-    state = {
-        items: []
-    };
-
     componentDidMount () {
-        axios.get('items/getTrending')
-            .then(response => {
-                this.setState({items: response.data});
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        this.props.getTrendingItems();
     }
 
     render() {
-        const items = this.state.items.map((item, index) => {
+        const items = this.props.trendingItems.map((item, index) => {
             return(
                 <TrendingItem
                 destination={item.dest}
                 text={item.name}
                 key={item._id}
                 itemId={item._id}
+                getAllItems={this.props.getAllItems}
                 />
             )
         });
@@ -41,7 +32,7 @@ class TrendingItems extends Component {
         }
         return (
             <div>
-                <h1 style={styles.menu}>Menu</h1>
+                <h1 style={styles.menu}>Trending</h1>
                 <div className = {classes.TrendingItemList}>
                     <ul>
                         {items}
