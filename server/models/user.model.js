@@ -13,6 +13,15 @@ let userSchema = mongoose.Schema({
       email: String,
       name: String,
       username: String,
+      gender: String,
+      hometown: {
+        id: String,
+        name: String
+      },
+      ageRange: {
+        min: Number,
+        max: Number
+      }
     },
     votes: [
       {

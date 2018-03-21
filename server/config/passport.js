@@ -26,9 +26,11 @@ passport.use(new JWTStrategy({
 // FACEBOOK STRATEGY (ONLY USED WHEN WE WANT TO GET AN ACCESS TOKEN)
 passport.use('facebookToken', new FacebookTokenStrategy({
     clientID: configAuth.facebookAuth.clientID,
-    clientSecret: configAuth.facebookAuth.clientSecret
+    clientSecret: configAuth.facebookAuth.clientSecret,
+    profileFields: ['id', 'name', 'photos', 'email', 'gender', 'hometown', 'age_range']
   },
   function(token, refreshToken, profile, done) {
+    console.log(profile._json.hometown);
 
     User.findOne({ 'facebook.id': profile.id }, function(err, user) {
       if (err)
@@ -42,6 +44,9 @@ passport.use('facebookToken', new FacebookTokenStrategy({
         newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
         newUser.facebook.username = profile.name.givenName + ' ' + profile.name.familyName;
+        newUser.facebook.gender = profile._json.gender;
+        newUser.facebook.hometown = profile._json.hometown;
+        newUser.facebook.ageRange = profile._json.age_range;
 
         newUser.save(function(err) {
           if (err)
