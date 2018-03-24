@@ -14,9 +14,11 @@ let userSchema = mongoose.Schema({
       name: String,
       username: String,
       gender: String,
-      hometown: {
-        id: String,
-        name: String
+      location: {
+        city: String,
+        country: String,
+        state: String,
+        continent: String
       },
       ageRange: {
         min: Number,

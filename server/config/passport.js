@@ -2,7 +2,7 @@ const passport = require('passport');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const JWTStrategy = require('passport-jwt').Strategy;
 const  { ExtractJwt } = require('passport-jwt');
-
+const continentsByCountry = require('../constants/countries');
 var User = require('../models/user.model.js');
 var configAuth = require('./auth');
 
@@ -27,10 +27,9 @@ passport.use(new JWTStrategy({
 passport.use('facebookToken', new FacebookTokenStrategy({
     clientID: configAuth.facebookAuth.clientID,
     clientSecret: configAuth.facebookAuth.clientSecret,
-    profileFields: ['id', 'name', 'photos', 'email', 'gender', 'hometown', 'age_range']
+    profileFields: ['id', 'name', 'photos', 'email', 'gender', 'hometown', 'age_range', 'location{location}']
   },
   function(token, refreshToken, profile, done) {
-    console.log(profile._json.hometown);
 
     User.findOne({ 'facebook.id': profile.id }, function(err, user) {
       if (err)
@@ -45,7 +44,10 @@ passport.use('facebookToken', new FacebookTokenStrategy({
         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
         newUser.facebook.username = profile.name.givenName + ' ' + profile.name.familyName;
         newUser.facebook.gender = profile._json.gender;
-        newUser.facebook.hometown = profile._json.hometown;
+        newUser.facebook.location.city = profile._json.location.location.city;
+        newUser.facebook.location.country = profile._json.location.location.country;
+        newUser.facebook.location.state = profile._json.location.location.state;
+        newUser.facebook.location.continent = continentsByCountry[profile._json.location.location.country];
         newUser.facebook.ageRange = profile._json.age_range;
 
         newUser.save(function(err) {
