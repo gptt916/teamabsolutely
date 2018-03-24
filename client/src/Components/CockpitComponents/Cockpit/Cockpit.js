@@ -81,6 +81,7 @@ class Cockpit extends Component {
                 </Progress>
                 <div className={classes.navButtons}>
                     <button onClick={() => this.onPrevClick()}className={classes.prevButton}>Prev</button>
+                    <button onClick={() => this.props.setShowStats(!this.props.showStats)}>{this.props.showStats ? 'Hide Stats' : 'Show Stats'}</button>
                     <button onClick={() => this.onNextClick()} className={classes.nextButton}>Next</button>
                 </div>
             </div>

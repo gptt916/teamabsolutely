@@ -19,7 +19,7 @@ export const GET_TRENDING_ITEMS = 'GET_TRENDING_ITEMS';
 export const CAST_VOTE = 'CAST_VOTE';
 export const UPDATE_ACTIVE_INDEX = 'UPDATE_ACTIVE_INDEX';
 export const SEARCH_ITEM = 'SEARCH_ITEM';
-
+export const SET_SHOW_STATS = 'SET_SHOW_STATS';
 
 
 

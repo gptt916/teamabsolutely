@@ -4,7 +4,7 @@ const initialState = {
     navbarItems: [
         {dest: "#", text: "New Item"}
     ],
-    showOverlay: true
+    showOverlay: false
 }
 
 function toggleOverlay(state){

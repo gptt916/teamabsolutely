@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Cockpit from '../CockpitComponents/Cockpit/Cockpit';
+import StatsCockpit from '../CockpitComponents/StatsCockpit/StatsCockpit';
 import Sidebar from '../SidebarComponents/Sidebar/Sidebar';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -21,6 +22,25 @@ const styles = {
 
 class MainComponent extends Component {
     render() {
+        let cockpit = null;
+        if (this.props.showStats) {
+            cockpit = <StatsCockpit
+            setShowStats={this.props.setShowStats}
+            item={this.props.items[this.props.activeIndex]}/>
+        }
+        else {
+            cockpit = <Cockpit 
+            items={this.props.items}
+            votes={this.props.votes}
+            activeIndex={this.props.activeIndex}
+            getAllItems={this.props.getAllItems}
+            setActiveIndex={this.props.setActiveIndex}
+            castVote={this.props.castVote}
+            getVotes={this.props.getVotes}
+            showStats={this.props.showStats}
+            setShowStats={this.props.setShowStats}
+            />
+        }
         return (
         <main>
             <div style={styles.sideBar}>
@@ -34,24 +54,8 @@ class MainComponent extends Component {
                 />
             </div>
             <div style={styles.cockPit}>
-                <Route exact path='/' render={() => <Cockpit 
-                                                    items={this.props.items}
-                                                    votes={this.props.votes}
-                                                    activeIndex={this.props.activeIndex}
-                                                    getAllItems={this.props.getAllItems}
-                                                    setActiveIndex={this.props.setActiveIndex}
-                                                    castVote={this.props.castVote}
-                                                    getVotes={this.props.getVotes}
-                                                    />}/>
-                <Route path='/:id' render={() => <Cockpit 
-                                                    items={this.props.items}
-                                                    votes={this.props.votes}
-                                                    activeIndex={this.props.activeIndex}
-                                                    getAllItems={this.props.getAllItems}
-                                                    setActiveIndex={this.props.setActiveIndex}
-                                                    castVote={this.props.castVote}
-                                                    getVotes={this.props.getVotes}
-                                                    />}/>
+                <Route exact path='/' render={() => cockpit}/>
+                <Route path='/:id' render={() => cockpit}/>
             </div>
         </main>
         )}
@@ -63,7 +67,8 @@ const mapStateToProps = state => {
         trendingItems: state.main.trendingItems,
         votes: state.main.votes,
         activeIndex: state.main.activeIndex,
-        searchQuery: state.main.searchFieldValue
+        searchQuery: state.main.searchFieldValue,
+        showStats: state.main.showStats
     };
 }
 
@@ -76,7 +81,8 @@ const mapDispatchToProps = dispatch => {
         castVote: (val, itemId) => dispatch(actionTypes.postVote(val, itemId)),
         updateActiveIndex: (itemId) => dispatch({type: actionTypes.UPDATE_ACTIVE_INDEX, itemId: itemId}),
         searchForItem: (query) => dispatch(actionTypes.fetchQueryItems(query)),
-        onSearchInput: (value) => dispatch({type: actionTypes.HANDLE_INPUT, newValue: value})
+        onSearchInput: (value) => dispatch({type: actionTypes.HANDLE_INPUT, newValue: value}),
+        setShowStats: (value) => dispatch({type: actionTypes.SET_SHOW_STATS, flag: value})
     }
 }
 

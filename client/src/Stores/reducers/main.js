@@ -7,7 +7,15 @@ const initialState = {
     searchFieldValue: '',
     votes: [],
     activeIndex: 0,
-    searchItems: []
+    searchItems: [],
+    showStats: false
+}
+
+function setShowStats(state, flag) {
+    return {
+        ...state,
+        showStats: flag
+    }
 }
 
 function getTrendingItems(state, data) {
@@ -139,6 +147,8 @@ const reducer = (state = initialState, action) => {
             return setSearchItems(state, action.data);
         case actionTypes.HANDLE_INPUT:
             return onSearchInput(state, action.newValue);
+        case actionTypes.SET_SHOW_STATS:
+            return setShowStats(state, action.flag);
         default:
             return state;
     }

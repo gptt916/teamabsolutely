@@ -21,7 +21,6 @@ class TrendingItems extends Component {
                 />
             )
         });
-
         const styles= {
             menu:{
                 color:'#494949', 
