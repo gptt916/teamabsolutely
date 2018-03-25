@@ -6,52 +6,74 @@ class StatsCockpit extends Component {
     render() {
         const data = {
             labels: [
-                'Red',
-                'Green',
-                'Yellow'
+                'YAY',
+                'NAY'
             ],
             datasets: [{
-                data: [300, 50, 100],
+                data: [this.props.item.countYAY, this.props.item.countNAY],
                 backgroundColor: [
-                '#FF6384',
                 '#36A2EB',
-                '#FFCE56'
+                '#FF6384'
                 ],
                 hoverBackgroundColor: [
-                '#FF6384',
                 '#36A2EB',
-                '#FFCE56'
+                '#FF6384'
                 ]
             }]
         };
 
         const data2 = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['NA', 'SA', 'EU', 'AF', 'AS', 'OC'],
             datasets: [
               {
-                label: 'My First dataset',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
+                label: 'YAY',
+                backgroundColor: '#36A2EB',
+                borderColor: '#36A2EB',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [65, 59, 80, 81, 56, 55, 40]
+                hoverBackgroundColor: '#36A2EB',
+                hoverBorderColor: '#36A2EB',
+                data: [this.props.item.countContinent.NA.yay,
+                    this.props.item.countContinent.SA.yay,
+                    this.props.item.countContinent.EU.yay,
+                    this.props.item.countContinent.AF.yay,
+                    this.props.item.countContinent.AS.yay,
+                    this.props.item.countContinent.OC.yay]
+              },
+              {
+                label: 'NAY',
+                backgroundColor: '#FF6384',
+                borderColor: '#FF6384',
+                borderWidth: 1,
+                hoverBackgroundColor: '#FF6384',
+                hoverBorderColor: '#FF6384',
+                data: [this.props.item.countContinent.NA.nay,
+                    this.props.item.countContinent.SA.nay,
+                    this.props.item.countContinent.EU.nay,
+                    this.props.item.countContinent.AF.nay,
+                    this.props.item.countContinent.AS.nay,
+                    this.props.item.countContinent.OC.nay]
               }
             ]
           };
 
         let body = [];
-
-        for (var i = 0; i < 5; i++) {
-            body.push(<div className={classes.chartContainer}>
-                        <Doughnut data={data}/>
-                    </div>);
+        body.push(<div className={classes.chartContainer}>
+                         <Doughnut data={data}/>
+                     </div>);
+        
+        body.push(<div className={classes.chartContainer}>
+                             <Bar data={data2} />
+                         </div>);
+        // for (var i = 0; i < 5; i++) {
+        //     body.push(<div className={classes.chartContainer}>
+        //                 <Doughnut data={data}/>
+        //             </div>);
             
-            body.push(<div className={classes.chartContainer}>
-                        <Bar data={data2} />
-                    </div>
-            );
-        }
+        //     body.push(<div className={classes.chartContainer}>
+        //                 <Bar data={data2} />
+        //             </div>
+        //     );
+        // }
 
         return (
             <div>
