@@ -1,5 +1,21 @@
-.chartContainer {
-    width: 50%;
+.barChartContainer {
+    width: 33%;
     float: left;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.radarChartContainer {
+    width: 33%;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.titleText {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button {
+    margin-bottom: 10px;
 }
