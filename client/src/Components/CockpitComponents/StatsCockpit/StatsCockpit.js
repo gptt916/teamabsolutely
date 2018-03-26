@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Doughnut, Bar, Radar } from 'react-chartjs-2';
+import { Doughnut, Bar, Radar, defaults } from 'react-chartjs-2';
 import classes from './StatsCockpit.css';
+
+defaults.global.defaultFontColor = '#fff';
 
 class StatsCockpit extends Component {
 
@@ -101,10 +103,33 @@ class StatsCockpit extends Component {
             ]
           };
           
+          const genderOptions={
+            title: {
+                display: true,
+                text: 'Gender',
+                fontColor: 'white'
+            }
+        };
+
+        const ageOptions={
+            title: {
+                display: true,
+                text: 'Age',
+                fontColor: 'white'
+            }
+        };
+
+        const contOptions={
+            title: {
+                display: true,
+                text: 'Continents',
+                fontColor: 'white'
+            }
+        };
           return [
-            (<div key="gender" className={classes.barChartContainer}><Bar data={gender} /></div>),
-            (<div key="age" className={classes.barChartContainer}><Bar data={age} /></div>),
-            (<div key="cont" className={classes.barChartContainer}><Bar data={continent} /></div>)
+            (<div key="gender" className={classes.barChartContainer}><Bar data={gender} options={genderOptions}/></div>),
+            (<div key="age" className={classes.barChartContainer}><Bar data={age} options={ageOptions}/></div>),
+            (<div key="cont" className={classes.barChartContainer}><Bar data={continent} options={contOptions}/></div>)
           ];
     }
 
@@ -236,18 +261,64 @@ class StatsCockpit extends Component {
             ]
         };
         
-        const options={
+        const genderOptions={
             scale: {
                 ticks: {
                     display: false
+                }
+            },
+            title: {
+                display: true,
+                text: 'Gender',
+                fontColor: 'white'
+            },
+            legend: {
+                labels: {
+                    fontColor: 'white'
+                }
+            }
+        };
+
+        const ageOptions={
+            scale: {
+                ticks: {
+                    display: false
+                }
+            },
+            title: {
+                display: true,
+                text: 'Age',
+                fontColor: 'white'
+            },
+            legend: {
+                labels: {
+                    fontColor: 'white'
+                }
+            }
+        };
+
+        const contOptions={
+            scale: {
+                ticks: {
+                    display: false
+                }
+            },
+            title: {
+                display: true,
+                text: 'Continents',
+                fontColor: 'white'
+            },
+            legend: {
+                labels: {
+                    fontColor: 'white'
                 }
             }
         };
 
         return [
-            (<div key="gender" className={classes.radarChartContainer}><Radar data={gender} options={options}/></div>),
-            (<div key="age" className={classes.radarChartContainer}><Radar data={age} options={options}/></div>),
-            (<div key="cont" className={classes.radarChartContainer}><Radar data={continent} options={options}/></div>)
+            (<div key="gender" className={classes.radarChartContainer}><Radar title="Test" data={gender} options={genderOptions}/></div>),
+            (<div key="age" className={classes.radarChartContainer}><Radar data={age} options={ageOptions}/></div>),
+            (<div key="cont" className={classes.radarChartContainer}><Radar data={continent} options={contOptions}/></div>)
           ];
     }
 
@@ -331,10 +402,34 @@ class StatsCockpit extends Component {
             }]
         };
 
+        const genderOptions={
+            title: {
+                display: true,
+                text: 'Gender',
+                fontColor: 'white'
+            }
+        };
+
+        const ageOptions={
+            title: {
+                display: true,
+                text: 'Age',
+                fontColor: 'white'
+            }
+        };
+
+        const contOptions={
+            title: {
+                display: true,
+                text: 'Continents',
+                fontColor: 'white'
+            }
+        };
+
         return [
-            (<div key="gender" className={classes.barChartContainer}><Doughnut data={gender}/></div>),
-            (<div key="age" className={classes.barChartContainer}><Doughnut data={age}/></div>),
-            (<div key="cont" className={classes.barChartContainer}><Doughnut data={continent}/></div>)
+            (<div key="gender" className={classes.barChartContainer}><Doughnut data={gender} options={genderOptions}/></div>),
+            (<div key="age" className={classes.barChartContainer}><Doughnut data={age} options={ageOptions}/></div>),
+            (<div key="cont" className={classes.barChartContainer}><Doughnut data={continent} options={genderOptions}/></div>)
           ];
     }
 
