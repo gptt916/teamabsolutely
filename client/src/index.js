@@ -38,16 +38,6 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-const logger = (store) => {
-    return (next) => {
-        return (action) => {
-            console.log('[Middleware] Dispatching', action);
-            const result = next(action);
-            console.log('[MiddleWare] next state', store.getState());
-            return result;
-        }
-    }
-}
 ReactDOM.render(<Provider store={store}>
                     <BrowserRouter>
                         <App />

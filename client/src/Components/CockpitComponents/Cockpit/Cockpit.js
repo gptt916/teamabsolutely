@@ -3,7 +3,6 @@ import classes from './Cockpit.css';
 import thumbsDown from '../../../assets/thumbs_down.png';
 import thumbsUp from '../../../assets/thumbs_up.png';
 import { Progress } from 'reactstrap';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 class Cockpit extends Component {
@@ -15,10 +14,8 @@ class Cockpit extends Component {
     componentWillReceiveProps() {
         var currIndex = 0;
 
-        console.log(window.location.pathname);
         if (this.props.history && window.location.pathname) {
             currIndex = this.props.items.map((item) => item._id).indexOf(window.location.pathname.substring(1));
-            console.log(currIndex);
         }
 
         this.props.setActiveIndex(currIndex < 0 ? 0 : currIndex);
@@ -38,7 +35,6 @@ class Cockpit extends Component {
 
     vote (val) {
         let vote = this.props.votes.find(vote => vote.itemId === this.props.items[this.props.activeIndex]._id);
-        console.log(vote);
         if (vote && vote.voteYAY === val) {
                 return;
         }

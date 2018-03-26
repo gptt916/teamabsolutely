@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './TrendingItems.css';
 import TrendingItem from './TrendingItem/TrendingItem';
-import axios from 'axios';
 import { withRouter} from 'react-router-dom';
 
 class TrendingItems extends Component {

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Cockpit from '../Components/CockpitComponents/Cockpit/Cockpit';
 import Navbar from '../Components/NavbarComponents/Navbar/Navbar';
-import Sidebar from '../Components/SidebarComponents/Sidebar/Sidebar';
 import AuthComponent from '../Components/AuthComponent/AuthComponent';
 import MainComponent from '../Components/MainComponent/MainComponent';
 import { connect } from 'react-redux';
 import * as actionTypes from '../Stores/actions/actions';
-import { Route } from 'react-router-dom';
 
 const styles = {
 	appContainer:{

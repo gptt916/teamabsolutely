@@ -176,7 +176,7 @@ class StatsCockpit extends Component {
         totalYay = 0;
         totalNay = 0;
 
-        for (var key in this.props.item.countAge) {
+        for (key in this.props.item.countAge) {
             totalYay += this.props.item.countAge[key].yay
             totalNay += this.props.item.countAge[key].nay
         }
@@ -220,7 +220,7 @@ class StatsCockpit extends Component {
         totalYay = 0;
         totalNay = 0;
 
-        for (var key in this.props.item.countContinent) {
+        for (key in this.props.item.countContinent) {
             totalYay += this.props.item.countContinent[key].yay
             totalNay += this.props.item.countContinent[key].nay
         }
@@ -346,7 +346,7 @@ class StatsCockpit extends Component {
 
         data = [];
 
-        for (var key in this.props.item.countAge) {
+        for (key in this.props.item.countAge) {
             data.push(this.props.item.countAge[key].yay + this.props.item.countAge[key].nay);
         }
 
@@ -375,7 +375,7 @@ class StatsCockpit extends Component {
 
         data = [];
 
-        for (var key in this.props.item.countContinent) {
+        for (key in this.props.item.countContinent) {
             data.push(this.props.item.countContinent[key].yay + this.props.item.countContinent[key].nay);
         }
 
@@ -429,58 +429,11 @@ class StatsCockpit extends Component {
         return [
             (<div key="gender" className={classes.barChartContainer}><Doughnut data={gender} options={genderOptions}/></div>),
             (<div key="age" className={classes.barChartContainer}><Doughnut data={age} options={ageOptions}/></div>),
-            (<div key="cont" className={classes.barChartContainer}><Doughnut data={continent} options={genderOptions}/></div>)
+            (<div key="cont" className={classes.barChartContainer}><Doughnut data={continent} options={contOptions}/></div>)
           ];
     }
 
     render() {
-        const data = {
-            labels: [
-                'YAY',
-                'NAY'
-            ],
-            datasets: [{
-                data: [this.props.item.countYAY, this.props.item.countNAY],
-                backgroundColor: [
-                '#36A2EB',
-                '#FF6384'
-                ],
-                hoverBackgroundColor: [
-                '#36A2EB',
-                '#FF6384'
-                ]
-            }]
-        };
-
-        
-
-          const data5 = {
-            labels: ['Eating', 'Drinking', 'Sleeping'],
-            datasets: [
-              {
-                label: 'My First dataset',
-                backgroundColor: 'rgba(54,162,235,0.2)',
-                borderColor: 'rgba(54,162,235,1)',
-                pointBackgroundColor: 'rgba(54,162,235,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(54,162,235,1)',
-                data: [65, 59, 90]
-              },
-              {
-                label: 'My Second dataset',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                pointBackgroundColor: 'rgba(255,99,132,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(255,99,132,1)',
-                data: [28, 48, 40]
-              }
-            ]
-          };
-
-
           let comparisons = this.getComparisonCharts();
           let participation = this.getParticipationCharts();
           let totalParticipation = this.getTotalParticipation();

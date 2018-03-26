@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actions';
-import { stat } from 'fs';
 
 const initialState = {
     trendingItems: [],

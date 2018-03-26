@@ -1,4 +1,7 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export const UPDATE_NAMES = 'UPDATE_NAMES';
 export const DELETE_PERSON = 'DELETE_PERSON';
@@ -51,14 +54,22 @@ export const getVotes = (data) => {
 }
 
 export const fetchVotes = () => {
-    return dispatch => {
-        axios.get('user/getAllUserVotes')
-        .then(response => {
-            dispatch(getVotes(response.data));
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    if (cookies.get('access_token')) {
+        return dispatch => {
+            axios.get('user/getAllUserVotes')
+            .then(response => {
+                console.log(response.data);
+                dispatch(getVotes(response.data));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+    }
+    else {
+        return dispatch => {
+            dispatch(getVotes({votes: []}));
+        } 
     }
 }
 
