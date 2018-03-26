@@ -1,5 +1,13 @@
 var Item = require('../models/item.model');
 var User = require('../models/user.model');
+var request = require("request");
+var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+
+var natural_language_understanding = new NaturalLanguageUnderstandingV1({
+  'username': '73528e5b-5ef8-4d10-b67b-88d5c0d54911',
+  'password': 'ecXJgzPYsx1d',
+  'version': '2018-03-16'
+});
 
 const CHILD_AGE = 12;
 const TEEN_AGE = 18;
@@ -8,24 +16,42 @@ const ADULT_AGE = 40;
 const MIDDLE_AGED_ADULT_AGE = 65;
 
 
+function getTags(itemName) {
+    var cleanedName = itemName.replace(/\s+/g, '+').toLowerCase().trim();
 
-var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-        anHttpRequest.open( "GET", aUrl, true );
-        anHttpRequest.send( null );
-    }
+    request("http://api.datamuse.com/words?ml=" + cleanedName + "&max=8", function(error, response, body) {
+        var datamuse = body;
+        var result = datamuse.slice(1, -1);
+        var array = JSON.parse("[" + result + "]");
+        var ret = array.map(function(i) { return i.word }).join(",");
+        console.log(ret);
+    });
 }
 
-function getTags(name) {
-    var client = new HttpClient();
+function approveItem(itemName) {
+    var parameters = {
+        'text': itemName,
+        'features': {
+            'entities': {
+                'emotion': true,
+                'sentiment': true,
+                'limit': 2
+            },
+            "categories": {}
+        },
+        "language": "en"
+    }
 
-    client.get('http://api.datamuse.com/words?sp=' + name, function(response) {
-        return response;
+    natural_language_understanding.analyze(parameters, function(err, response) {
+        if (err) {
+            console.log('error:', err);
+        } else {
+            if (response.categories.length > 0 || response.entities.length > 0 ) {
+                console.log(itemName + ": Approved")
+            } else {
+                console.log(itemName + ": Not Valid")
+            }
+        }
     });
 }
 
@@ -43,6 +69,8 @@ function createItem(body) {
 }
 
 function searchItems(search, callback) {
+    approveItem(search);
+    getTags(search);
     var regex = new RegExp(search, 'i');
 
     Item.find({'name': regex})
@@ -98,7 +126,7 @@ function getIncCommand(user, voteYAY) {
 
     res['countYAY'] = voteYAY ? 1 : -1;
     res['countNAY'] = voteYAY ? -1 : 1;
-    
+
     if (user.facebook.gender) {
         if (user.facebook.gender.toLowerCase() === 'male') {
             res['countGender.male.yay'] = voteYAY ? 1 : -1;
