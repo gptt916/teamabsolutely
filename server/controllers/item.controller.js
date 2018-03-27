@@ -48,7 +48,7 @@ function pushItemToDatabase(req, res, item) {
 }
 
 function createItem(req, res) {
-    item = itemService.createItem(req.body);
+    item = itemService.createItem(req.user, req.body);
     var parameters = watson_parameters;
     parameters.text = item.name.toLowerCase().trim();
 

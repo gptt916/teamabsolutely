@@ -12,7 +12,12 @@ const navbar = (props) => {
                 navbarItems={props.navbarItems}/>
             <NewEntryForm 
                 showOverlay={props.showOverlay}
-                toggleOverlay={props.toggleOverlay} />
+                toggleOverlay={props.toggleOverlay}
+                nameText={props.nameText}
+                urlText={props.urlText}
+                onNameInput={props.onNameInput}
+                onURLInput={props.onURLInput}
+                onNewItemSubmit={props.onNewItemSubmit} />
         </div>
     );
 };

@@ -7,13 +7,11 @@ const YOUNG_ADULT_AGE = 26;
 const ADULT_AGE = 40;
 const MIDDLE_AGED_ADULT_AGE = 65;
 
-function createItem(body) {
+function createItem(user, body) {
     var item = new Item({
         name: body.name,
-        user: body.user,
+        user: user._id,
         dateSubmitted: new Date(),
-        countYAY: 0,
-        countNAY: 0,
         tags: body.name,
         src: body.src
     });
@@ -21,8 +19,6 @@ function createItem(body) {
 }
 
 function searchItems(search, callback) {
-    approveItem(search);
-    getTags(search);
     var regex = new RegExp(search, 'i');
 
     Item.find({'name': regex})

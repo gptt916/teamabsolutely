@@ -21,6 +21,12 @@ app.use(function(req, res, next) {
   });
   
 app.use(bodyParser.json());
+
+app.use(function (req, res, next){
+    console.log("HTTP request", req.method, req.url);
+    next();
+});
+
 app.use('/', routes);
 
 app.set('port', process.env.PORT || 8080);

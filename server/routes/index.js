@@ -19,7 +19,7 @@ router.get('/user/getAll', userCtrl.getAllUsers);
 
 router.get('/user/getAllUserVotes', passportJWT, userCtrl.getAllUseerVotes);
 
-router.post('/items/create', itemCtrl.createItem);
+router.post('/items/create', passportJWT, itemCtrl.createItem);
 
 router.get('/items/getAll', itemCtrl.getAllItems);
 

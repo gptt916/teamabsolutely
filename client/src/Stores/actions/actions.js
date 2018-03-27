@@ -23,6 +23,9 @@ export const CAST_VOTE = 'CAST_VOTE';
 export const UPDATE_ACTIVE_INDEX = 'UPDATE_ACTIVE_INDEX';
 export const SEARCH_ITEM = 'SEARCH_ITEM';
 export const SET_SHOW_STATS = 'SET_SHOW_STATS';
+export const ON_NEW_NAME = 'ON_NEW_NAME';
+export const ON_NEW_URL = 'ON_NEW_URL';
+export const NEW_ITEM_SUBMIT = 'NEW_ITEM_SUBMIT';
 
 
 
@@ -125,6 +128,25 @@ export const fetchQueryItems = (query) => {
         axios.get('items/search/' + query)
         .then(response => {
             dispatch(searchItems(response.data))
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+}
+
+export const newItemSubmit = (data) => {
+    return {
+        type: NEW_ITEM_SUBMIT,
+        data: data
+    }
+}
+
+export const submitNewItem = (name, url) => {
+    return dispatch => {
+        axios.post('items/create', {name: name, src: url})
+        .then(response => {
+            dispatch(newItemSubmit(response.data))
         })
         .catch(err => {
             console.log(err);

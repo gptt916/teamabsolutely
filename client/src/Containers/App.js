@@ -22,6 +22,11 @@ class App extends Component {
 						navbarItems={this.props.navbarItems}
 						showOverlay={this.props.showOverlay}
 						toggleOverlay={this.props.toggleOverlay}
+						nameText={this.props.nameText}
+						urlText={this.props.urlText}
+						onNameInput={this.props.onNameInput}
+						onURLInput={this.props.onURLInput}
+						onNewItemSubmit={this.props.onNewItemSubmit}
 					/>
                     <AuthComponent
 					access_token={this.props.access_token}
@@ -43,6 +48,8 @@ const mapStateToProps = (state) => {
 		isLoggedIn: state.auth.isLoggedIn,
 		access_token: state.auth.access_token,
 		sidebar: state.sidebar,
+		nameText: state.navbar.nameText,
+		urlText: state.navbar.urlText
 	};
 };
 
@@ -55,7 +62,10 @@ const mapDispatchToProps = (dispatch) => {
 		setLoggedOut: () => dispatch({type: actionTypes.SET_LOGGED_OUT}),
 		onSearchInput: (value) => dispatch({type:actionTypes.HANDLE_INPUT, value: value}),
 		toggleOverlay: () => dispatch({type:actionTypes.TOGGLE_OVERLAY}),
-		onSearchSubmit: () => dispatch({type:actionTypes.HANDLE_SEARCH_SUBMIT})
+		onSearchSubmit: () => dispatch({type:actionTypes.HANDLE_SEARCH_SUBMIT}),
+		onNameInput: (value) => dispatch({type: actionTypes.ON_NEW_NAME, newName: value}),
+		onURLInput: (value) => dispatch({type: actionTypes.ON_NEW_URL, newURL: value}),
+		onNewItemSubmit: (name, url) => dispatch(actionTypes.submitNewItem(name, url))
 	};
 };
 

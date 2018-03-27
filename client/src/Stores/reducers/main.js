@@ -26,7 +26,6 @@ function getTrendingItems(state, data) {
 
 function updateActiveIndex(state, itemId) {
     let newIndex = state.items.find(item => item._id === itemId);
-    console.log(newIndex);
 
     return {
         ...state,
@@ -126,7 +125,18 @@ function onSearchInput(state, newValue) {
     }
 }
 
+function onNewItemSubmit(state, data) {
+    let newItems = [...state.items];
+    newItems.push(data);
 
+    window.location.pathname = data._id;
+
+    return {
+        ...state,
+        items: newItems,
+        activeIndex: newItems.length - 1
+    }
+}
 const reducer = (state = initialState, action) => {
     // return state;
     switch (action.type) {
@@ -148,6 +158,8 @@ const reducer = (state = initialState, action) => {
             return onSearchInput(state, action.newValue);
         case actionTypes.SET_SHOW_STATS:
             return setShowStats(state, action.flag);
+        case actionTypes.NEW_ITEM_SUBMIT:
+            return onNewItemSubmit(state, action.data);
         default:
             return state;
     }
