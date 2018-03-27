@@ -21,7 +21,13 @@ function createItem(user, body) {
 function searchItems(search, callback) {
     var regex = new RegExp(search, 'i');
 
-    Item.find({'name': regex})
+    Item.find({
+        "$or": [{
+            "name": regex
+        }, {
+            "tags": regex
+        }]
+    })
     .exec()
     .then(docs => {
         callback(docs);
