@@ -1,59 +1,11 @@
 var Item = require('../models/item.model');
 var User = require('../models/user.model');
-var request = require("request");
-var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
-
-var natural_language_understanding = new NaturalLanguageUnderstandingV1({
-  'username': '73528e5b-5ef8-4d10-b67b-88d5c0d54911',
-  'password': 'ecXJgzPYsx1d',
-  'version': '2018-03-16'
-});
 
 const CHILD_AGE = 12;
 const TEEN_AGE = 18;
 const YOUNG_ADULT_AGE = 26;
 const ADULT_AGE = 40;
 const MIDDLE_AGED_ADULT_AGE = 65;
-
-
-function getTags(itemName) {
-    var cleanedName = itemName.replace(/\s+/g, '+').toLowerCase().trim();
-
-    request("http://api.datamuse.com/words?ml=" + cleanedName + "&max=8", function(error, response, body) {
-        var datamuse = body;
-        var result = datamuse.slice(1, -1);
-        var array = JSON.parse("[" + result + "]");
-        var ret = array.map(function(i) { return i.word }).join(",");
-        console.log(ret);
-    });
-}
-
-function approveItem(itemName) {
-    var parameters = {
-        'text': itemName,
-        'features': {
-            'entities': {
-                'emotion': true,
-                'sentiment': true,
-                'limit': 2
-            },
-            "categories": {}
-        },
-        "language": "en"
-    }
-
-    natural_language_understanding.analyze(parameters, function(err, response) {
-        if (err) {
-            console.log('error:', err);
-        } else {
-            if (response.categories.length > 0 || response.entities.length > 0 ) {
-                console.log(itemName + ": Approved")
-            } else {
-                console.log(itemName + ": Not Valid")
-            }
-        }
-    });
-}
 
 function createItem(body) {
     var item = new Item({
