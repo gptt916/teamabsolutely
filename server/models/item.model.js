@@ -1,8 +1,5 @@
 let mongoose = require('mongoose');
 
-function generateRandomVotes() {
-    return Math.floor(Math.random() * 10000) + 100;
-}
 let itemSchema = mongoose.Schema({
     name: {
         type: String,
@@ -23,14 +20,14 @@ let itemSchema = mongoose.Schema({
         type:Number,
         required: true,
         unique: false,
-        default: function() { return generateRandomVotes() },
+        default: 0,
         min: 0
     },
     countNAY: {
         type:Number,
         required: true,
         unique: false,
-        default: function() { return generateRandomVotes() },
+        default: 0,
         min: 0
     },
     tags: {
@@ -47,36 +44,36 @@ let itemSchema = mongoose.Schema({
         male: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         female: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         other: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         }
@@ -85,72 +82,72 @@ let itemSchema = mongoose.Schema({
         child: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         teen: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         youngAdult: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         adult: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         middleAgedAdult: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         senior: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         }
@@ -159,72 +156,72 @@ let itemSchema = mongoose.Schema({
         NA: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         SA: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         EU: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         AS: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         AF: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         },
         OC: {
             yay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             },
             nay: {
                 type: Number,
-                default: function() { return generateRandomVotes() },
+                default: 0,
                 min: 0
             }
         }

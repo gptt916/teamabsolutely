@@ -150,6 +150,7 @@ export const submitNewItem = (name, url) => {
         })
         .catch(err => {
             console.log(err);
+            window.alert('Watson rejected your item');
         });
     }
 }
