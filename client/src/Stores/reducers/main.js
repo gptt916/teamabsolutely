@@ -110,6 +110,9 @@ function setSearchItems(state, items){
         return item;
     });
 
+    if (newItems.length > 0) {
+        window.history.pushState(newItems[0].name, newItems[0].name, newItems[0]._id);
+    }
     return {
         ...state,
         items: newItems,
