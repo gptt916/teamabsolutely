@@ -17,7 +17,10 @@ const styles = {
 	},
 	cockPit:{
         backgroundColor:'#29303B'
-	}
+	},
+    main:{
+        backgroundColor:'#29303B'
+    }
 }
 
 class MainComponent extends Component {
@@ -29,7 +32,7 @@ class MainComponent extends Component {
             item={this.props.items[this.props.activeIndex]}/>
         }
         else {
-            cockpit = <Cockpit 
+            cockpit = <Cockpit
             items={this.props.items}
             votes={this.props.votes}
             activeIndex={this.props.activeIndex}
@@ -42,7 +45,7 @@ class MainComponent extends Component {
             />
         }
         return (
-        <main>
+        <main style={styles.main}>
             <div style={styles.sideBar}>
                 <Sidebar
                 trendingItems={this.props.trendingItems}
