@@ -48,11 +48,11 @@ class Cockpit extends Component {
             var greyYAY = classes.notVoted;
             var greyNAY = classes.notVoted;
             let currIndex = this.props.activeIndex;
-            if (this.props.votes.length > 0) {
+            if (this.props.activeIndex >= this.props.items.length) {
+                currIndex = 0;
+            }
 
-                if (this.props.activeIndex >= this.props.items.length) {
-                    currIndex = 0;
-                }
+            if (this.props.votes.length > 0) {
                 const vote = this.props.votes.find(vote => vote.itemId === this.props.items[currIndex]._id);
                 if (vote) {
                     if (vote.voteYAY) {
@@ -63,6 +63,7 @@ class Cockpit extends Component {
                     }
                 }
             }
+
             res = (
             <div>
                 <h3 className={classes.imageTitle}>{this.props.items[currIndex].name}</h3>
