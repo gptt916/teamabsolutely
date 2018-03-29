@@ -27,7 +27,9 @@ app.use(function (req, res, next){
     next();
 });
 
-app.use('/', routes);
+app.use('/api', routes);
+
+app.use('/', express.static('static'));
 
 app.set('port', process.env.PORT || 8080);
 
