@@ -19,7 +19,7 @@ import thunk from 'redux-thunk';
 const cookies = new Cookies();
 
 
-axios.defaults.baseURL = 'https://teamabsolutely.herokuapp.com//api';
+axios.defaults.baseURL = 'https://teamabsolutely.herokuapp.com/api';
 
 axios.interceptors.request.use(request => {
     request.headers.Authorization = cookies.get('access_token');

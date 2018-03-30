@@ -40,7 +40,7 @@ var unless = function(path, middleware) {
     };
 };
 
-app.use(unless('/api', express.static('../client/build')));
+app.use(unless('/api', express.static('static')));
 
 app.set('port', process.env.PORT || 8080);
 
