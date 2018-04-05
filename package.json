@@ -4,7 +4,8 @@
   "description": "- Nick Gong\r - Trevor Whitaker\r - Gobin Giritharan",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && node app.js"
   },
   "repository": {
     "type": "git",

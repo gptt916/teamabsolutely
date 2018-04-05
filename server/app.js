@@ -13,12 +13,12 @@ require('dotenv').config();
 mongoose.connect(process.env.MONGO_HOST);
 
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
+//     next();
+//   });
   
 app.use(bodyParser.json());
 
@@ -27,7 +27,20 @@ app.use(function (req, res, next){
     next();
 });
 
-app.use('/', routes);
+app.use('/api', routes);
+
+var unless = function(path, middleware) {
+    return function(req, res, next) {
+        console.log(req.path);
+        if (req.path.startsWith(path)) {
+            return next();
+        } else {
+            return middleware(req, res, next);
+        }
+    };
+};
+
+app.use(unless('/api', express.static('static')));
 
 app.set('port', process.env.PORT || 8080);
 

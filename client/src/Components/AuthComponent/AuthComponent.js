@@ -52,7 +52,7 @@ export default class AuthComponent extends Component {
     }
 
     render() {
-        let header = <p>Logged in</p>;
+        let header = <h5>Logged in</h5>;
 
         if (!this.props.isLoggedIn) {
             header = <div className="fb-login-button" scope="public_profile, email, user_hometown, user_location" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>;
